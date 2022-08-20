@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+    width: 70%;
+    margin: 0 auto;
+    color: white;
+}
+
+header {
+    padding: 15px 30px;
+    background-color: #a6dfa6;
+}
+
+.search {
+    background: url("/home/ryan/JavaScript/Odin/Library-Catalog/library.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-log {
+    background: rgba(0,0,0,.3);
+    padding: 20px;
+    margin: 30px;
+}
+
+.search-box {
+    background: rgba(0,0,0,.3);
+    padding: 20px;
+    margin: 60px 30px;
+}
+
+.display-key {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 65px;
+    background-color: lightgrey;
+    margin-bottom: 50px;
+}
+
+.display-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 20px;
+
+}
+
+.display-tile {
+    background-color: #a6dfa6;
+    padding: 40px 30px;
+    border-radius: 5px;
+}
+
+.read-status {
+    display: flex;
+    gap: 10px;
+}
