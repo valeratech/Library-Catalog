@@ -16,7 +16,7 @@
                 <h3>Search</h3>
                 <label for="query-search"></label>
                 <input type="search" id="query-search" name="query" placeholder="Search My Library/Books">
-                <button type="submit"></button></search>
+                <button type="submit">Search</button>
             </div>
             <div class="book-log">
                 <h3>Book Log</h3>
@@ -27,12 +27,22 @@
         </section>
         <section class="display">
             <article class="display-key">
-                <div class="order-by">
-                    <label for="sorting"></label>
-                    <select id="sorting" name="sorting">
-                        <option>option1</option>
-                        <option>option2</option>
-                    </select>
+                <div class="key-container">
+                    <p>Order By:</p>
+                    <div class="order-date">
+                        <label for="date"></label>
+                        <select id="date" name="date">
+                            <option>option1</option>
+                            <option>option2</option>
+                        </select>
+                    </div>
+                    <div class="order-name">
+                        <label for="name"></label>
+                        <select id="name" name="sorting">
+                            <option>option1</option>
+                            <option>option2</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="read-status">
                     <div class="read">
