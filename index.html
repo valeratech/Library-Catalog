@@ -8,15 +8,15 @@
 </head>
 <body>
     <header>
-        <p>Logo</p>
+        <h1 class="logo">My Library</h1>
     </header>
     <main>
         <section class="search">
             <div class="search-box">
                 <h3>Search</h3>
                 <label for="query-search"></label>
-                <input type="search" id="query-search" name="query" placeholder="Search My Library/Books">
-                <button type="submit">Search</button>
+                <input type="search" id="query-search" name="query" placeholder="Search My Library">
+                <button class="search-button" type="submit">Search</button>
             </div>
             <div class="book-log">
                 <h3>Book Log</h3>
@@ -32,34 +32,31 @@
                     <div class="order-date">
                         <label for="date"></label>
                         <select id="date" name="date">
-                            <option value="#">option1</option>
-                            <option value="#">option2</option>
+                            <option value="#">Date Published</option>
+                            <option value="#">Date Entered</option>
                         </select>
                     </div>
                     <div class="order-name">
                         <label for="name"></label>
                         <select id="name" name="sorting">
-                            <option value="#">option1</option>
-                            <option value="#">option2</option>
+                            <option value="#">Ascending</option>
+                            <option value="#">Descending</option>
                         </select>
                     </div>
                     <div class="order-read">
                         <label for="read"></label>
                         <select id="read" name="read">
-                            <option value="#">option1</option>
-                            <option value="#">option2</option>
+                            <option value="#">All</option>
+                            <option value="#">Read</option>
+                            <option value="#">Not read</option>
                         </select>
                     </div>
                 </div>
                 <div class="read-status">
-                    <div class="read">
-                        <div class="read-container"></div>
-                        <p>Read</p>
-                    </div>
-                    <div class="unread-container">
-                        <div></div>
-                        <p>Not Read</p>
-                    </div>
+                    <div class="read-container"></div>
+                    <p>Read</p>
+                    <div class="unread-container"></div>
+                    <p>Not Read</p>
                 </div>
             </article>
             <article class="display-tiles">
