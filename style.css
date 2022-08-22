@@ -35,6 +35,15 @@ header {
 
 }
 
+.book-log h3 {
+    margin-bottom: 5px;
+}
+
+.book-log p {
+    line-height: 1.25rem;
+}
+
+
 .search-box {
     background: rgba(0,0,0,.7);
     padding: 20px;
@@ -89,12 +98,21 @@ header {
 }
 
 .display-tile {
-    background: linear-gradient(to right,  #4c7a4c, #a6dfa6);
+    background: linear-gradient(to right,  #406840, #a6dfa6);
     padding: 40px 30px;
     border-radius: 5px;
     box-shadow: 7px 7px 7px -6px gray;
 }
 
+.display-tile:hover {
+    background: linear-gradient(to right, #404568, #a6d9df);
+    padding: 40px 30px;
+    border-radius: 5px;
+    height: 102%;
+    width: 100.5%;
+    box-shadow: 13px 13px 13px -6px gray;
+    transition: all .1s ease;
+}
 
 .display-tile > h3 {
     font-size: 1.563rem;
@@ -102,6 +120,7 @@ header {
 
 .display-tile > p {
     font-size: 1.25rem;
+    line-height: 30px;
 }
 
 .read-status {
