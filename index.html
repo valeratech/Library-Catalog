@@ -19,7 +19,7 @@
             <button class="search-button" type="submit">Search</button>
         </div>
         <div class="book-log">
-            <h3>Book Log</h3>
+            <h4>Book Log</h4>
             <p>Total book count:</p>
             <p>Read:</p>
             <p>Not Read:</p>
@@ -61,14 +61,19 @@
         </article>
         <article class="display-tiles">
             <!-- books entered here -->
-<!--            <div class="display-tile">-->
-<!--                <h3>My Title</h3>-->
-<!--                <p class="tile-field">Author</p>-->
-<!--                <p class="tile-field">Pages</p>-->
-<!--                <p class="tile-field">Published</p>-->
-<!--                <p class="tile-field">Language</p>-->
-<!--                <p class="tile-field">Mark as read</p>-->
-<!--            </div>-->
+            <div class="display-tile">
+                <h3 class="tile-heading">My Title</h3>
+                <p class="tile-field">Author</p>
+                <p class="tile-field">Pages</p>
+                <p class="tile-field">Published</p>
+                <ul>
+                    <li>
+                        <input type="checkbox" name="power" id="power">
+                        <label for="power"><span class="on">Read</span> <span class="off">Unread</span></label>
+                    </li>
+                </ul>
+
+            </div>
         </article>
     </section>
     <section class="form-container">
@@ -107,7 +112,7 @@
                 <label for="summary">
                     <span>Summary: </span>
                 </label>
-                <textarea id="summary" name="pub-date"></textarea>
+                <textarea id="summary" name="summary"></textarea>
             </p>
             <p>
                 <label for="status">
@@ -118,7 +123,7 @@
                     <option value="false">Not Read</option>
                 </select>
             </p>
-            <button class="add-book" type="submit">Add Book</button>
+            <button class="add-book" type="submit">Add</button>
         </form>
     </section>
 </main>

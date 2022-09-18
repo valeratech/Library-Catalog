@@ -16,10 +16,6 @@ h1 {
     font-size: 3.052rem;
 }
 
-h2 {
-    font-size: 2.441rem;
-}
-
 .logo {
     font-size: 1.953rem;
 }
@@ -111,20 +107,17 @@ header {
     padding: 40px 30px;
     border-radius: 5px;
     box-shadow: 7px 7px 7px -6px gray;
+    position: relative;
 }
 
 .display-tile:hover {
     background: linear-gradient(to right, #404568, #a6d9df);
-    padding: 40px 30px;
-    border-radius: 5px;
-    height: 102%;
-    width: 100.5%;
     box-shadow: 13px 13px 13px -6px gray;
     transition: all .1s ease;
 }
 
 .tile-heading {
-    font-size: 1.563rem;
+    font-size: 1.953rem;
     margin-bottom: 20px;
 }
 
@@ -204,7 +197,7 @@ select {
 .form-container {
     width: 100vw;
     height: 100vh;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     left: 0;
     z-index: 999;
@@ -228,7 +221,7 @@ form {
     padding: 50px;
     border: solid 1px #d3d3d3;
     border-radius: 5px;
-    position: relative;
+    /*position: relative;*/
     background-color: #fff;
     /*overflow-y: scroll;*/
 
@@ -278,6 +271,122 @@ textarea {
 
 .add-book {
     align-self: end;
-    padding: 10px;
+    padding: 10px 30px;
     font-size: 1.563rem;
 }
+
+
+/* Radio Button */
+
+ul {
+    position: absolute;
+    bottom: 15px;
+    right: -20px;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    border: 2px solid black;
+    background: #eee;
+    transition: all 0.4s;
+}
+
+li {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+/*
+   Size the label, and make the on and off parts sit on top
+   of one another using positioning
+*/
+
+li label {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+}
+
+li label span {
+    position: absolute;
+    right: 90px;
+}
+
+/*
+   remove the default styling of the checkbox using appearance
+   and create the outer toggle area
+*/
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    border: 2px solid black;
+    background: #bcbcbc;
+    transition: all 0.4s;
+}
+
+/*
+   style the ::before content to look like
+   the inner toggle switch - the bit that moves
+*/
+
+input[type="checkbox"]::before {
+    width: 16px;
+    height: 16px;
+    border-radius: 9px;
+    background-color: black;
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 14%;
+    transition: all 0.4s;
+}
+
+/*
+   change the outer background color and move the inner toggle switch
+   when the checkbox is checked; use transitions for smooth animation
+*/
+
+input[type="checkbox"]:checked {
+    background-color: #fbfbfb;
+    transition: all 0.4s;
+}
+
+input[type="checkbox"]:checked::before {
+    left: 32%;
+    transition: all 0.4s;
+}
+
+/*
+   cause the On and Off parts of the label to be visible when the checkbox is
+   checked and unchecked, respectively
+*/
+
+input[type="checkbox"] ~ label .on, input[type="checkbox"]:checked ~ label .off {
+    opacity: 0;
+}
+
+input[type="checkbox"] ~ label .off, input[type="checkbox"]:checked ~ label .on {
+    opacity: 1;
+}
+
+/*
+   make the focus outline a bit more subtle on Chrome, rather than the
+   default heavy blue outline
+*/
+
+input:focus {
+    outline: 1px solid black;
+}
+
