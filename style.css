@@ -9,6 +9,15 @@ body {
     width: 70%;
     margin: 0 auto;
     color: white;
+    position: relative;
+}
+
+h1 {
+    font-size: 3.052rem;
+}
+
+h2 {
+    font-size: 2.441rem;
 }
 
 .logo {
@@ -21,7 +30,7 @@ header {
 }
 
 .search {
-    background: url("/home/ryan/JavaScript/Odin/Library-Catalog/library-dark.jpg");
+    background: url("/home/ryan/JavaScript/Odin/Library-Catalog/4UaCtWP.jpg");
     background-size: cover;
     display: flex;
     flex-flow: wrap;
@@ -191,4 +200,63 @@ select {
     cursor: pointer;
 }
 
+.form-container {
+    width: 100vw;
+    height: 100vh;
+    /*position: fixed;*/
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    /*backdrop-filter: blur(2px);*/
+    display: flex;
+    align-items: center;
+}
 
+form {
+    color: black;
+    margin-right: auto;
+    margin-left: auto;
+    width: max-content;
+    max-width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    text-align: start;
+    padding: 50px 75px;
+    border: solid 1px #d3d3d3;
+    border-radius: 5px;
+    /*position: relative;*/
+    background-color: #fff;
+    /*overflow-y: scroll;*/
+
+}
+
+form input {
+    padding: 7px;
+    font-size: 1.25rem;
+    width: 350px;
+}
+
+form > p, h2 {
+    margin-bottom: 33px;
+}
+.form-header {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    text-align: right;
+    font-size: 1.563rem;
+    width: 110px;
+    margin-right: 5px;
+}
+
+.add-book {
+    align-self: end;
+    padding: 10px;
+    font-size: 1.563rem;
+
+}

@@ -60,54 +60,50 @@
                 </div>
             </article>
             <article class="display-tiles">
-                <div class="display-tile">
-                    <h3>title</h3>
-                    <p>Author</p>
-                    <p>Pages</p>
-                    <p>Published</p>
-                    <p>Language</p>
-                    <p>Mark as read</p>
-                </div>
-                <div class="display-tile">
-                    <h3>title</h3>
-                    <p>Author</p>
-                    <p>Pages</p>
-                    <p>Published</p>
-                    <p>Language</p>
-                    <p>Mark as read</p>
-                </div>
-                <div class="display-tile">
-                    <h3>title</h3>
-                    <p>Author</p>
-                    <p>Pages</p>
-                    <p>Published</p>
-                    <p>Language</p>
-                    <p>Mark as read</p>
-                </div>
-                <div class="display-tile">
-                    <h3>title</h3>
-                    <p>Author</p>
-                    <p>Pages</p>
-                    <p>Published</p>
-                    <p>Language</p>
-                    <p>Mark as read</p>
-                </div>
-                <div class="display-tile">
-                    <h3>title</h3>
-                    <p>Author</p>
-                    <p>Pages</p>
-                    <p>Published</p>
-                    <p>Language</p>
-                </div>
-                <div class="display-tile">
-                    <h3>title</h3>
-                    <p>Author</p>
-                    <p>Pages</p>
-                    <p>Published</p>
-                    <p>Language</p>
-                    <p>Mark as read</p>
-                </div>
+                <!-- books entered here -->
             </article>
+        </section>
+        <section>
+            <article>
+                <h2></h2>
+            </article>
+        </section>
+        <section class="form-container">
+            <form class="book-form">
+                <h2 class="form-header">Add Book to Library</h2>
+                <p class="form-key">Required fields are followed by <strong><abbr title="required" aria-label="required">*</abbr></strong>.</p>
+                <p>
+                    <label for="title">
+                        <span>Title: </span>
+                        <strong><abbr title="required" aria-label="required">*</abbr></strong>
+                    </label>
+                    <input type="text" id="title" name="title" required>
+                </p>
+                <p>
+                    <label for="author">
+                        <span>Author: </span>
+                        <strong><abbr title="author" aria-label="required">*</abbr></strong>
+                    </label>
+                    <input type="text" id="author" name="author" required>
+                </p>
+                <p>
+                    <label for="pages">
+                        <span>Pages: </span>
+                        <strong><abbr title="required" aria-label="required">*</abbr></strong>
+                    </label>
+                    <input type="pages" id="pages" name="pages" required>
+                </p>
+                <p>
+                    <label for="status">
+                        <span>Status:</span>
+                    </label>
+                    <select class="status" id="status" name="isread">
+                        <option value="true">Read</option>
+                        <option value="false">Not Read</option>
+                    </select>
+                </p>
+                <button class="add-book" type="submit">Add Book</button>
+            </form>
         </section>
     </main>
     <footer></footer>
