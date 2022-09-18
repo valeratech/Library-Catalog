@@ -7,108 +7,124 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1 class="logo">My Library</h1>
-    </header>
-    <main>
-        <section class="search">
-            <div class="search-box">
-                <h3>Search</h3>
-                <label for="query-search"></label>
-                <input type="search" id="query-search" name="query" placeholder="Search My Library">
-                <button class="search-button" type="submit">Search</button>
-            </div>
-            <div class="book-log">
-                <h3>Book Log</h3>
-                <p>Total book count:</p>
-                <p>Read:</p>
-                <p>Not Read:</p>
-            </div>
-        </section>
-        <section class="display">
-            <article class="display-key">
-                <div class="key-container">
-                    <p>Order By:</p>
-                    <div class="order-date">
-                        <label for="date"></label>
-                        <select id="date" name="date">
-                            <option value="#">Date Published</option>
-                            <option value="#">Date Entered</option>
-                        </select>
-                    </div>
-                    <div class="order-name">
-                        <label for="name"></label>
-                        <select id="name" name="sorting">
-                            <option value="#">Ascending</option>
-                            <option value="#">Descending</option>
-                        </select>
-                    </div>
-                    <div class="order-read">
-                        <label for="read"></label>
-                        <select id="read" name="read">
-                            <option value="#">All</option>
-                            <option value="#">Read</option>
-                            <option value="#">Not read</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="read-status">
-                    <div class="read-container"></div>
-                    <p>Read</p>
-                    <div class="unread-container"></div>
-                    <p>Not Read</p>
-                </div>
-            </article>
-            <article class="display-tiles">
-                <!-- books entered here -->
-            </article>
-        </section>
-        <section>
-            <article>
-                <h2></h2>
-            </article>
-        </section>
-        <section class="form-container">
-            <form class="book-form">
-                <h2 class="form-header">Add Book to Library</h2>
-                <p class="form-key">Required fields are followed by <strong><abbr title="required" aria-label="required">*</abbr></strong>.</p>
-                <p>
-                    <label for="title">
-                        <span>Title: </span>
-                        <strong><abbr title="required" aria-label="required">*</abbr></strong>
-                    </label>
-                    <input type="text" id="title" name="title" required>
-                </p>
-                <p>
-                    <label for="author">
-                        <span>Author: </span>
-                        <strong><abbr title="author" aria-label="required">*</abbr></strong>
-                    </label>
-                    <input type="text" id="author" name="author" required>
-                </p>
-                <p>
-                    <label for="pages">
-                        <span>Pages: </span>
-                        <strong><abbr title="required" aria-label="required">*</abbr></strong>
-                    </label>
-                    <input type="pages" id="pages" name="pages" required>
-                </p>
-                <p>
-                    <label for="status">
-                        <span>Status:</span>
-                    </label>
-                    <select class="status" id="status" name="isread">
-                        <option value="true">Read</option>
-                        <option value="false">Not Read</option>
+<header>
+    <h1 class="logo">My Library</h1>
+</header>
+<main>
+    <section class="search">
+        <div class="search-box">
+            <h3>Search</h3>
+            <label for="query-search"></label>
+            <input type="search" id="query-search" name="query" placeholder="Search My Library">
+            <button class="search-button" type="submit">Search</button>
+        </div>
+        <div class="book-log">
+            <h3>Book Log</h3>
+            <p>Total book count:</p>
+            <p>Read:</p>
+            <p>Not Read:</p>
+        </div>
+    </section>
+    <section class="display">
+        <article class="display-key">
+            <div class="key-container">
+                <p>Order By:</p>
+                <div class="order-date">
+                    <label for="date"></label>
+                    <select id="date" name="date">
+                        <option value="#">Date Published</option>
+                        <option value="#">Date Entered</option>
                     </select>
-                </p>
-                <button class="add-book" type="submit">Add Book</button>
-            </form>
-        </section>
-    </main>
-    <footer></footer>
-    <button class="new-book">
-        <span class="material-icons">+</span>
-    </button>
+                </div>
+                <div class="order-name">
+                    <label for="name"></label>
+                    <select id="name" name="sorting">
+                        <option value="#">Ascending</option>
+                        <option value="#">Descending</option>
+                    </select>
+                </div>
+                <div class="order-read">
+                    <label for="read"></label>
+                    <select id="read" name="read">
+                        <option value="#">All</option>
+                        <option value="#">Read</option>
+                        <option value="#">Not read</option>
+                    </select>
+                </div>
+            </div>
+            <div class="read-status">
+                <div class="read-container"></div>
+                <p>Read</p>
+                <div class="unread-container"></div>
+                <p>Not Read</p>
+            </div>
+        </article>
+        <article class="display-tiles">
+            <!-- books entered here -->
+<!--            <div class="display-tile">-->
+<!--                <h3>My Title</h3>-->
+<!--                <p class="tile-field">Author</p>-->
+<!--                <p class="tile-field">Pages</p>-->
+<!--                <p class="tile-field">Published</p>-->
+<!--                <p class="tile-field">Language</p>-->
+<!--                <p class="tile-field">Mark as read</p>-->
+<!--            </div>-->
+        </article>
+    </section>
+    <section class="form-container">
+        <form class="book-form">
+            <h2 class="form-header">Add Book to Library</h2>
+            <p class="form-key">Required fields are followed by <strong><abbr title="required" aria-label="required">*</abbr></strong>.</p>
+            <p>
+                <label for="title">
+                    <span>Title:</span>
+                    <strong><abbr title="required" aria-label="required">*</abbr></strong>
+                </label>
+                <input type="text" id="title" name="title" required>
+            </p>
+            <p>
+                <label for="author">
+                    <span>Author:</span>
+                    <strong><abbr title="author" aria-label="required">*</abbr></strong>
+                </label>
+                <input type="text" id="author" name="author" required>
+            </p>
+            <p>
+                <label for="pages">
+                    <span>Pages:</span>
+                    <strong><abbr title="required" aria-label="required">*</abbr></strong>
+                </label>
+                <input type="number" id="pages" name="pages" min="0" max="100" required>
+            </p>
+            <p>
+                <label for="pub-date">
+                    <span>Date:</span>
+                    <strong><abbr title="required" aria-label="required">*</abbr></strong>
+                </label>
+                <input type="date" id="pub-date" name="pub-date" required>
+            </p>
+            <p>
+                <label for="summary">
+                    <span>Summary: </span>
+                </label>
+                <textarea id="summary" name="pub-date"></textarea>
+            </p>
+            <p>
+                <label for="status">
+                    <span>Status: </span>
+                </label>
+                <select class="status" id="status" name="isread">
+                    <option value="true">Read</option>
+                    <option value="false">Not Read</option>
+                </select>
+            </p>
+            <button class="add-book" type="submit">Add Book</button>
+        </form>
+    </section>
+</main>
+<footer></footer>
+<button class="new-book">
+    <span class="material-icons">+</span>
+</button>
 </body>
 </html>
