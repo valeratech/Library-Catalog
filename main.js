@@ -26,6 +26,33 @@ function addBookToLibrary(e) {
     addTile();
 }
 
+function addTile() {
+    const myArticle = document.querySelector('.display-tiles');
+
+    const myTile = document.createElement('div');
+    const myTitle = document.createElement('h3');
+    const myAuthor = document.createElement('p');
+    const myPages = document.createElement('p');
+
+    myTile.className = 'display-tile';
+    myTitle.className = 'tile-title';
+    myAuthor.className = 'tile-author';
+    myPages.className = 'title-page';
+
+    myLibrary.forEach((book) => {
+        console.log(book);
+        console.log(book.title);
+
+        myTitle.textContent = book.title
+        myAuthor.textContent = `Author:  ${book.author}`
+        myPages.textContent = `Pages:  ${book.pages}`
+
+        myTile.appendChild(myTitle);
+        myTile.appendChild(myAuthor);
+        myTile.appendChild(myPages);
+        myArticle.appendChild(myTile);
+    });
+}
 
 
 
