@@ -14,14 +14,17 @@ function Book(title, author, pages, date, summary, read, bookID) {
 
 function addBookToLibrary(e) {
     e.preventDefault();
-    const inputs = document.querySelectorAll('input');
+    // The :scope pseudo-class restores the expected behavior, only matching selectors on descendants of the base element:
+    const form = document.querySelector('form');
+    const inputs = form.querySelectorAll(':scope input')
+
     const status = document.querySelector('.status');
     const textArea = document.querySelector('textarea')
-    console.log(inputs);
-    const title = inputs[1].value;
-    const author = inputs[2].value;
-    const pages = inputs[3].value;
-    const date = inputs[4].value;
+
+    const title = inputs[0].value;
+    const author = inputs[1].value;
+    const pages = inputs[2].value;
+    const date = inputs[3].value;
     const summary = textArea.value;
     const read = (status.value === 'true'); // convert value to a boolean
 
@@ -42,6 +45,7 @@ function createTile(read) {
     const myInsertDate = document.createElement('p');
     const myUl = document.createElement('ul');
     const insertDate = new Date();
+    const removeIcon = document.createElement('span');
 
     myTile.className = 'display-tile';
     myTitle.className = 'tile-heading';
@@ -49,15 +53,16 @@ function createTile(read) {
     myPages.className = 'tile-field';
     myPubDate.className = 'tile-field';
     myInsertDate.className = 'tile-field';
+    removeIcon.className = 'remove-book';
 
     myLibrary.forEach((book) => {
-        // console.log(book);
-        // console.log(book.title);
+
         myTitle.textContent = book.title;
         myAuthor.textContent = `Author:  ${book.author}`;
         myPages.textContent = `Pages:  ${book.pages}`;
         myPubDate.textContent = `Date Published:  ${book.date}`;
         myInsertDate.textContent = `Date Entered: ${insertDate.getFullYear()}-${insertDate.getMonth()}-${insertDate.getDate()}`
+        removeIcon.innerHTML = `&#x2715`
 
         if (read) {
             myUl.innerHTML = `<li><input type="checkbox" name="power" id="power" checked>
@@ -79,6 +84,7 @@ function createTile(read) {
         myTile.appendChild(myPubDate);
         myTile.appendChild(myInsertDate);
         myTile.appendChild(myUl);
+        myTile.appendChild(removeIcon);
         myArticle.appendChild(myTile);
 
         const mySummary = document.createElement('p');
@@ -106,4 +112,20 @@ displayTiles.addEventListener('change', (e) => {
     } else {
         child.style.backgroundImage = 'linear-gradient(to right, #bababa, #969696)';
     }
+});
+
+// Event listener to remove Book
+const removeBook = document.querySelector('.remove-book');
+displayTiles.addEventListener('click', (e) => {
+    /* RETREIVES THE INDEX OF THE SPECIFIC TILES WHERE THE BUTTON IS TOGGLED */
+    console.log(e)
+    // const parent = e.target.parentNode.parentNode.parentNode.parentNode;
+    // const child = e.target.parentNode.parentNode.parentNode;
+    // const index = Array.prototype.indexOf.call(parent.children, child);
+    // /* It has to be background-image, not background-color, for gradients. */
+    // if (e.target.checked) {
+    //     child.style.backgroundImage = 'linear-gradient(to right,  #406840, #a6dfa6)';
+    // } else {
+    //     child.style.backgroundImage = 'linear-gradient(to right, #bababa, #969696)';
+    // }
 });

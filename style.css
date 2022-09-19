@@ -38,6 +38,7 @@ header {
     background: rgba(0,0,0,.7);
     padding: 40px;
     margin: 30px;
+    position: relative;
 
 }
 
@@ -179,6 +180,7 @@ select {
 
 .new-book:hover {
     transform: rotate(90deg) scale(1.2);
+    cursor: pointer;
 }
 
 .new-book:active {
@@ -195,9 +197,30 @@ select {
     border-radius: 50%;
 }
 
-.new-book:hover {
+.remove-book {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+.remove-book:hover {
+    transform: rotate(90deg) scale(1.3);
     cursor: pointer;
 }
+
+.remove-book:active {
+    filter: opacity(80%);
+}
+
+.remove-book {
+    transition: transform 0.25s, opacity 0.25s;
+}
+
+.remove-book {
+    font-size: 1.953rem;
+    line-height: 1.2;
+    border-radius: 50%;
+}
+
 
 .form-container {
     width: 100vw;
