@@ -26,11 +26,12 @@ header {
 }
 
 .search {
-    background: url("/home/ryan/JavaScript/Odin/Library-Catalog/4UaCtWP.jpg");
+    background: url("/home/ryan/JavaScript/Odin/Library-Catalog/library_animated.jpg");
     background-size: cover;
     display: flex;
     flex-flow: wrap;
     justify-content: space-between;
+    padding: 100px 0;
 }
 
 .book-log {
@@ -89,10 +90,14 @@ header {
 
 .read-container {
     background: linear-gradient(to right, #4c7a4c, #a6dfa6);
+    border: solid;
+    border-width: 1px;
 }
 
 .unread-container {
     background: linear-gradient(to right, #bababa, #969696);
+    border: solid;
+    border-width: 1px;
 }
 
 .display-tiles {
@@ -103,7 +108,7 @@ header {
 }
 
 .display-tile {
-    background: linear-gradient(to right,  #406840, #a6dfa6);
+    background-image: linear-gradient(to right,  #406840, #a6dfa6);
     padding: 40px 30px;
     border-radius: 5px;
     box-shadow: 7px 7px 7px -6px gray;
@@ -111,7 +116,7 @@ header {
 }
 
 .display-tile:hover {
-    background: linear-gradient(to right, #404568, #a6d9df);
+    background-image: linear-gradient(to right, #404568, #a6d9df);
     box-shadow: 13px 13px 13px -6px gray;
     transition: all .1s ease;
 }
