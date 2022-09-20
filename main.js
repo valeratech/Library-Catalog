@@ -31,6 +31,7 @@ function addBookToLibrary(e) {
     myLibrary.push(new Book(title, author, pages, date, summary, read, bookID));
     bookID++;
     createTile(read);
+    console.log(myLibrary);
 }
 
 
@@ -91,8 +92,6 @@ function createTile(read) {
         mySummary.textContent = `${book.summary}`
         mySummary.textContent = `${book.summary}`
         mySummary.className = 'tile-field';
-
-        // myTile.appendChild(mySummary); // Will specify summary info on the back of tile/card
     });
 }
 
@@ -105,7 +104,7 @@ displayTiles.addEventListener('change', (e) => {
     /* RETREIVES THE INDEX OF THE SPECIFIC TILES WHERE THE BUTTON IS TOGGLED */
     const parent = e.target.parentNode.parentNode.parentNode.parentNode;
     const child = e.target.parentNode.parentNode.parentNode;
-    const index = Array.prototype.indexOf.call(parent.children, child);
+    // const index = Array.prototype.indexOf.call(parent.children, child);
     /* It has to be background-image, not background-color, for gradients. */
     if (e.target.checked) {
         child.style.backgroundImage = 'linear-gradient(to right,  #406840, #a6dfa6)';
@@ -115,17 +114,15 @@ displayTiles.addEventListener('change', (e) => {
 });
 
 // Event listener to remove Book
-const removeBook = document.querySelector('.remove-book');
 displayTiles.addEventListener('click', (e) => {
     /* RETREIVES THE INDEX OF THE SPECIFIC TILES WHERE THE BUTTON IS TOGGLED */
-    console.log(e)
-    // const parent = e.target.parentNode.parentNode.parentNode.parentNode;
-    // const child = e.target.parentNode.parentNode.parentNode;
-    // const index = Array.prototype.indexOf.call(parent.children, child);
-    // /* It has to be background-image, not background-color, for gradients. */
-    // if (e.target.checked) {
-    //     child.style.backgroundImage = 'linear-gradient(to right,  #406840, #a6dfa6)';
-    // } else {
-    //     child.style.backgroundImage = 'linear-gradient(to right, #bababa, #969696)';
-    // }
+    const parent = e.target.parentNode.parentNode;
+    const child = e.target.parentNode;
+    const index = Array.prototype.indexOf.call(parent.children, child);
+
+    if (e.target.className === 'remove-book') {
+        // remove object from the myLibrary array as well as the DOM element
+        myLibrary.splice(index, 1);
+        child.remove();
+    }
 });

@@ -225,7 +225,7 @@ select {
 .form-container {
     width: 100vw;
     height: 100vh;
-    /*position: fixed;*/
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
@@ -249,7 +249,7 @@ form {
     padding: 50px;
     border: solid 1px #d3d3d3;
     border-radius: 5px;
-    /*position: relative;*/
+    position: relative;
     background-color: #fff;
     /*overflow-y: scroll;*/
 
@@ -362,6 +362,7 @@ input[type="checkbox"] {
     border: 2px solid black;
     background: #bcbcbc;
     transition: all 0.4s;
+    border: none;
 }
 
 /*
@@ -414,7 +415,5 @@ input[type="checkbox"] ~ label .off, input[type="checkbox"]:checked ~ label .on 
    default heavy blue outline
 */
 
-input:focus {
-    outline: 1px solid black;
-}
+
 
