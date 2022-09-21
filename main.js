@@ -1,6 +1,3 @@
-// const book1 = new Book('Hobbit', 'Tolkien', 'Pages', true, 5);
-let myLibrary = [];
-let bookID = 20220
 
 function Book(title, author, pages, date, summary, read, bookID) {
     this.title = title;
@@ -13,7 +10,7 @@ function Book(title, author, pages, date, summary, read, bookID) {
 }
 
 function addBookToLibrary(e) {
-    e.preventDefault();
+    // e.preventDefault();
     // The :scope pseudo-class restores the expected behavior, only matching selectors on descendants of the base element:
     const form = document.querySelector('form');
     const inputs = form.querySelectorAll(':scope input')
@@ -32,6 +29,21 @@ function addBookToLibrary(e) {
     bookID++;
     createTile(read);
     console.log(myLibrary);
+    addRemoveMsg();
+}
+
+function addRemoveMsg() {
+    if (myLibrary.length === 0) {
+        const mainDisplay = document.querySelector('.display');
+        const addCatalogMsg = document.createElement('div');
+        addCatalogMsg.className = 'catalog-message'
+        addCatalogMsg.innerHTML = `<h2>There are no books in your catalog</h2>
+            <p><em>Select the add symbol in the bottom right corner to add books</em></p>`;
+        mainDisplay.appendChild(addCatalogMsg);
+    } else if (myLibrary.length === 1) {
+        const catalogMsg = document.querySelector('.catalog-message');
+        catalogMsg.remove();
+    }
 }
 
 
@@ -59,7 +71,7 @@ function createTile(read) {
     myLibrary.forEach((book) => {
 
         myTitle.textContent = book.title;
-        myAuthor.textContent = `Author:  ${book.author}`;
+        myAuthor.innerHTML = `Author:  ${book.author}`;
         myPages.textContent = `Pages:  ${book.pages}`;
         myPubDate.textContent = `Date Published:  ${book.date}`;
         myInsertDate.textContent = `Date Entered: ${insertDate.getFullYear()}-${insertDate.getMonth()}-${insertDate.getDate()}`
@@ -113,7 +125,7 @@ displayTiles.addEventListener('change', (e) => {
     }
 });
 
-// Event listener to remove Book
+// Event listener to remove Book from array and tiles
 displayTiles.addEventListener('click', (e) => {
     /* RETREIVES THE INDEX OF THE SPECIFIC TILES WHERE THE BUTTON IS TOGGLED */
     const parent = e.target.parentNode.parentNode;
@@ -125,4 +137,45 @@ displayTiles.addEventListener('click', (e) => {
         myLibrary.splice(index, 1);
         child.remove();
     }
+    addRemoveMsg();
 });
+
+// Event listener to add Book to array and tiles
+const newBook = document.querySelector('.new-book');
+newBook.addEventListener('click',() => {
+    const formContainer = document.querySelector('.form-container');
+    const form = document.querySelector('.book-form');
+    formContainer.style.display = 'flex';
+    form.style.display = 'flex';
+})
+
+const closeForm = document.querySelector('.close-form');
+closeForm.addEventListener('click', () => {
+    const formContainer = document.querySelector('.form-container');
+    const form = document.querySelector('.book-form');
+    formContainer.style.display = 'none';
+    form.style.display = 'none';
+})
+
+// Book(title, author, pages, date, summary, read, bookID)
+
+const book1 = new Book('The Art of War', 'Sun Tzu', 256, null, ` The Art Of War has been 
+considered the definitive text on military strategy and warfare ever since being written in ancient China around 500 BC, 
+inspiring businesses, athletes, and of course generals to beat their opponents and competition the right way until 
+today.`, false, 1);
+
+
+const book2 = new Book('Dune', 'Frank Herbert', 576, 'null', `Set on the desert planet Arrakis, Dune is 
+the story of the boy Paul Atreides, who would become the mysterious man known as Muad'Dib. He would avenge the 
+traitorous plot against his noble family--and would bring to fruition humankind's most ancient and unattainable dream.
+A stunning blend of adventure and mysticism, environmentalism and politics, Dune won the first Nebula Award for Best 
+Novel, shared the Hugo Award, and formed the basis of what it undoubtedly the grandest epic in science fiction.`,
+    false, 2);
+
+let myLibrary = [];
+let bookID = 20220
+
+myLibrary.push(book1);
+createTile(false);
+myLibrary.push(book2);
+createTile(true);

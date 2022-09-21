@@ -10,6 +10,7 @@ body {
     margin: 0 auto;
     color: white;
     position: relative;
+    font-family: sans-serif;
 }
 
 h1 {
@@ -132,6 +133,11 @@ header {
     margin-bottom: 20px;
 }
 
+.catalog-message {
+    color: #000000;
+    text-align: center;
+}
+
 .read-status {
     display: flex;
     gap: 10px;
@@ -197,25 +203,25 @@ select {
     border-radius: 50%;
 }
 
-.remove-book {
+.close-form, .remove-book {
     position: absolute;
     top: 14px;
     right: 14px;
 }
-.remove-book:hover {
+.close-form:hover, .remove-book:hover {
     transform: rotate(90deg) scale(1.3);
     cursor: pointer;
 }
 
-.remove-book:active {
+.close-form:active, .remove-book:active {
     filter: opacity(80%);
 }
 
-.remove-book {
+.close-form, .remove-book {
     transition: transform 0.25s, opacity 0.25s;
 }
 
-.remove-book {
+.close-form, .remove-book {
     font-size: 1.953rem;
     line-height: 1.2;
     border-radius: 50%;
@@ -230,8 +236,8 @@ select {
     left: 0;
     z-index: 999;
     background-color: rgba(0, 0, 0, 0.5);
-    /*backdrop-filter: blur(2px);*/
-    display: flex;
+    backdrop-filter: blur(2px);
+    display: none;
     align-items: center;
 }
 
@@ -242,7 +248,7 @@ form {
     width: max-content;
     max-width: 100vw;
     max-height: 100vh;
-    display: flex;
+    display: none;
     flex-direction: column;
     font-size: 1rem;
     text-align: start;
