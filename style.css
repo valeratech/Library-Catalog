@@ -37,18 +37,21 @@ header {
 
 .book-log {
     background: rgba(0,0,0,.7);
-    padding: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 70px;
     margin: 30px;
     position: relative;
 
 }
 
-.book-log h3 {
-    margin-bottom: 5px;
+.book-log h4, p {
+    margin-bottom: 6px;
 }
 
-.book-log p {
-    line-height: 1.25rem;
+.book-log h4 {
+    font-size: 1.25rem;
 }
 
 

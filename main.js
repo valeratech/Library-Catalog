@@ -1,5 +1,5 @@
 
-function Book(title, author, pages, date, summary, read, bookID) {
+function createBook(title, author, pages, date, summary, read, bookID) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -25,11 +25,12 @@ function addBookToLibrary(e) {
     const summary = textArea.value;
     const read = (status.value === 'true'); // convert value to a boolean
 
-    myLibrary.push(new Book(title, author, pages, date, summary, read, bookID));
+    myLibrary.push(new createBook(title, author, pages, date, summary, read, bookID));
     bookID++;
     createTile(read);
     console.log(myLibrary);
     addRemoveMsg();
+    bookCount();
 }
 
 function addRemoveMsg() {
@@ -44,6 +45,24 @@ function addRemoveMsg() {
         const catalogMsg = document.querySelector('.catalog-message');
         catalogMsg.remove();
     }
+}
+
+function bookCount() {
+    // Code not efficient on resources but for demo purposes
+    const totalBooks = document.querySelectorAll('.book-log p');
+    totalBooks[0].textContent = `Total Book: ${myLibrary.length}`;
+    let readBook = 0;
+    let unreadBook = 0;
+    for (book of myLibrary) {
+        console.log(typeof book.read);
+        if (book.read) {
+            readBook += 1;
+        } else {
+            unreadBook += 1;
+        }
+    }
+    totalBooks[1].textContent = `Read: ${readBook}`;
+    totalBooks[2].textContent = `Not Read: ${unreadBook}`;
 }
 
 
@@ -110,18 +129,25 @@ function createTile(read) {
 const addBook = document.querySelector('.add-book');
 addBook.addEventListener('click', addBookToLibrary);
 
-// const toggleRead = document.querySelectorAll('input[type="checkbox"]');
+/* RETREIVES THE INDEX OF THE SPECIFIC TILES WHERE THE BUTTON IS TOGGLED */
+// Changes the state of the myLibrary array
 const displayTiles = document.querySelector('.display-tiles');
 displayTiles.addEventListener('change', (e) => {
-    /* RETREIVES THE INDEX OF THE SPECIFIC TILES WHERE THE BUTTON IS TOGGLED */
     const parent = e.target.parentNode.parentNode.parentNode.parentNode;
     const child = e.target.parentNode.parentNode.parentNode;
-    // const index = Array.prototype.indexOf.call(parent.children, child);
+    const index = Array.prototype.indexOf.call(parent.children, child);
     /* It has to be background-image, not background-color, for gradients. */
     if (e.target.checked) {
         child.style.backgroundImage = 'linear-gradient(to right,  #406840, #a6dfa6)';
+        myLibrary[index].read = true;
+        console.log(myLibrary[index]);
+        bookCount();
     } else {
         child.style.backgroundImage = 'linear-gradient(to right, #bababa, #969696)';
+        myLibrary[index].read = false;
+        console.log(myLibrary[index].read);
+        console.log(myLibrary[index]);
+        bookCount();
     }
 });
 
@@ -136,8 +162,10 @@ displayTiles.addEventListener('click', (e) => {
         // remove object from the myLibrary array as well as the DOM element
         myLibrary.splice(index, 1);
         child.remove();
+        bookCount();
     }
     addRemoveMsg();
+
 });
 
 // Event listener to add Book to array and tiles
@@ -159,18 +187,18 @@ closeForm.addEventListener('click', () => {
 
 // Book(title, author, pages, date, summary, read, bookID)
 
-const book1 = new Book('The Art of War', 'Sun Tzu', 256, null, ` The Art Of War has been 
+const book1 = new createBook('The Art of War', 'Sun Tzu', 256, null, ` The Art Of War has been 
 considered the definitive text on military strategy and warfare ever since being written in ancient China around 500 BC, 
 inspiring businesses, athletes, and of course generals to beat their opponents and competition the right way until 
 today.`, false, 1);
 
 
-const book2 = new Book('Dune', 'Frank Herbert', 576, 'null', `Set on the desert planet Arrakis, Dune is 
+const book2 = new createBook('Dune', 'Frank Herbert', 576, '1965-08-01', `Set on the desert planet Arrakis, Dune is 
 the story of the boy Paul Atreides, who would become the mysterious man known as Muad'Dib. He would avenge the 
 traitorous plot against his noble family--and would bring to fruition humankind's most ancient and unattainable dream.
 A stunning blend of adventure and mysticism, environmentalism and politics, Dune won the first Nebula Award for Best 
 Novel, shared the Hugo Award, and formed the basis of what it undoubtedly the grandest epic in science fiction.`,
-    false, 2);
+    true, 2);
 
 let myLibrary = [];
 let bookID = 20220
@@ -179,3 +207,5 @@ myLibrary.push(book1);
 createTile(false);
 myLibrary.push(book2);
 createTile(true);
+
+bookCount();
