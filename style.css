@@ -15,6 +15,13 @@ body {
 
 h1 {
     font-size: 3.052rem;
+    color: white;
+    letter-spacing: 2px;
+    /*outline: 3px solid white;*/
+    /*outline-offset: .25em;*/
+    display: inline-block;
+    margin: 0.25em 0 0.5em;
+
 }
 
 .logo {
@@ -23,7 +30,8 @@ h1 {
 
 header {
     padding: 15px 30px;
-    background-color: #a6dfa6;
+    background-color: #0e759c;
+    font-family: sans-serif;
 }
 
 .search {
@@ -59,7 +67,7 @@ header {
     background: rgba(0,0,0,.7);
     padding: 20px;
     margin: 60px 30px;
-    flex: 0 1 500px;
+    flex: 0 1 550px;
 }
 
 .search-box > h3 {
@@ -77,7 +85,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: minmax(65px, 1fr);
-    background-color: lightgrey;
+    background-color: #a0a0a0;
     margin-bottom: 50px;
     align-items: center;
     padding: 0 15px;
@@ -113,7 +121,7 @@ header {
 }
 
 .display-tile {
-    background-image: linear-gradient(to right,  #406840, #a6dfa6);
+    /*background-image: linear-gradient(to right,  #406840, #a6dfa6);*/
     padding: 40px 30px;
     border-radius: 5px;
     box-shadow: 7px 7px 7px -6px gray;
@@ -121,8 +129,7 @@ header {
 }
 
 .display-tile:hover {
-    background-image: linear-gradient(to right, #404568, #a6d9df);
-    box-shadow: 13px 13px 13px -6px gray;
+    box-shadow: 15px 15px 17px 1px gray;
     transition: all .1s ease;
 }
 
@@ -297,7 +304,7 @@ label {
     display: inline-block;
     text-align: center;
     font-size: 1.25rem;
-    margin-right: 3px;
+    margin-right: 8px;
 }
 
 textarea {
@@ -305,7 +312,6 @@ textarea {
     height: 75px;
     vertical-align: top;
 }
-
 .add-book {
     align-self: end;
     padding: 10px 30px;
@@ -404,6 +410,7 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:checked::before {
     left: 32%;
     transition: all 0.4s;
+    background-color: #106ed4;
 }
 
 /*

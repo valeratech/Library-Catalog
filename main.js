@@ -41,7 +41,8 @@ function addRemoveMsg() {
         addCatalogMsg.innerHTML = `<h2>There are no books in your catalog</h2>
             <p><em>Select the add symbol in the bottom right corner to add books</em></p>`;
         mainDisplay.appendChild(addCatalogMsg);
-    } else if (myLibrary.length === 1) {
+    } else if (myLibrary.length === 1 && document.querySelector('.catalog-message')) {
+        // condition checks if there is at least 1 tile and if catalog message already exists - then remove
         const catalogMsg = document.querySelector('.catalog-message');
         catalogMsg.remove();
     }
