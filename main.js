@@ -12,7 +12,7 @@ function createBook(title, author, pages, date, summary, read, bookID) {
 function addBookToLibrary(e) {
     // e.preventDefault();
     // The :scope pseudo-class restores the expected behavior, only matching selectors on descendants of the base element:
-    const form = document.querySelector('form');
+    const form = document.querySelector('.book-form');
     const inputs = form.querySelectorAll(':scope input')
 
     const status = document.querySelector('.status');
@@ -28,7 +28,6 @@ function addBookToLibrary(e) {
     myLibrary.push(new createBook(title, author, pages, date, summary, read, bookID));
     bookID++;
     createTile(read);
-    console.log(myLibrary);
     addRemoveMsg();
     bookCount();
 }
@@ -55,7 +54,6 @@ function bookCount() {
     let readBook = 0;
     let unreadBook = 0;
     for (book of myLibrary) {
-        console.log(typeof book.read);
         if (book.read) {
             readBook += 1;
         } else {
@@ -100,15 +98,17 @@ function createTile(read) {
         if (read) {
             myUl.innerHTML = `<li><input type="checkbox" name="power" id="power" checked>
                           <label for="power"><span class="on">Read</span><span class="off">Unread</span></label></li>`;
-            myTile.style.backgroundImage = 'linear-gradient(to right,  #406840, #a6dfa6)';
-            // const myStatus = document.querySelector('input[type="checkbox"]');
-            // console.log(myStatus);
+            myTile.style.backgroundImage = 'linear-gradient(135deg, #3a5271 0%, #7fccd6 100%)';
+
         } else {
             myUl.innerHTML = `<li><input type="checkbox" name="power" id="power">
                 <label for="power"><span class="on">Read</span><span class="off">Unread</span></label></li>`;
-            myTile.style.backgroundImage = 'linear-gradient(to right, #bababa, #969696)';
-            // const myStatus = document.getElementById("checkbox");
-            // console.log(myStatus)
+            myTile.style.backgroundImage = 'linear-gradient(135deg, #e3e3e3 0%, #5d6874 100%)';
+            myTitle.style.color = '#201e1e';
+            myAuthor.style.color = '#201e1e';
+            myPages.style.color = '#201e1e';
+            myPubDate.style.color = '#201e1e';
+            myInsertDate.style.color = '#201e1e';
         }
 
         myTile.appendChild(myTitle);
@@ -138,16 +138,23 @@ displayTiles.addEventListener('change', (e) => {
     const child = e.target.parentNode.parentNode.parentNode;
     const index = Array.prototype.indexOf.call(parent.children, child);
     /* It has to be background-image, not background-color, for gradients. */
+    const pElements = child.querySelectorAll('p');
+    const headElement = child.querySelector('h3')
     if (e.target.checked) {
-        child.style.backgroundImage = 'linear-gradient(to right,  #406840, #a6dfa6)';
+        child.style.backgroundImage = 'linear-gradient(135deg, #3a5271 0%, #7fccd6 100%)';
         myLibrary[index].read = true;
-        console.log(myLibrary[index]);
+        pElements.forEach((paragraph) => {
+            paragraph.style.color = '#ffffff';
+        })
+        headElement.style.color = '#ffffff'
         bookCount();
     } else {
-        child.style.backgroundImage = 'linear-gradient(to right, #bababa, #969696)';
+        child.style.backgroundImage = 'linear-gradient(135deg, #e3e3e3 0%, #5d6874 100%)';
         myLibrary[index].read = false;
-        console.log(myLibrary[index].read);
-        console.log(myLibrary[index]);
+        pElements.forEach((paragraph) => {
+            paragraph.style.color = '#201e1e';
+        })
+        headElement.style.color = '#201e1e';
         bookCount();
     }
 });
@@ -158,7 +165,6 @@ displayTiles.addEventListener('click', (e) => {
     const parent = e.target.parentNode.parentNode;
     const child = e.target.parentNode;
     const index = Array.prototype.indexOf.call(parent.children, child);
-
     if (e.target.className === 'remove-book') {
         // remove object from the myLibrary array as well as the DOM element
         myLibrary.splice(index, 1);

@@ -30,7 +30,7 @@ h1 {
 
 header {
     padding: 15px 30px;
-    background-color: #0e759c;
+    background-color: #52a9b5;
     font-family: sans-serif;
 }
 
@@ -51,6 +51,7 @@ header {
     padding-right: 70px;
     margin: 30px;
     position: relative;
+    border-radius: 10px ;
 
 }
 
@@ -64,22 +65,82 @@ header {
 
 
 .search-box {
-    background: rgba(0,0,0,.7);
+    /*background: rgba(0,0,0,.7);*/
     padding: 20px;
     margin: 60px 30px;
     flex: 0 1 550px;
 }
 
-.search-box > h3 {
-    font-size: 1.563rem;
-    margin-bottom: 7px;
+/*stuff*/
+
+.search-bar {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 60px;
+    height: 60px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 50px;
+    border: 4px solid white;
+    padding: 5px;
 }
 
-.search-button {
-    width: 80px;
-    padding: 11px 0;
-    vertical-align: top;
+input[type="search"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 50px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
 }
+
+.fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #de2b15;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+.search-bar > i:before {
+    content: "\f002";
+    font-size: 30px;
+}
+
+.search-bar:hover{
+    width: 450px;
+    cursor: pointer;
+
+}
+
+.search-bar:hover input{
+    display: block;
+    font-size: 1.953rem
+}
+
+.search-bar:hover .fa{
+    background: #de2b15;
+    color: white;
+}
+
+/*stuff*/
+
 
 .display-key {
     display: grid;
@@ -102,13 +163,13 @@ header {
 }
 
 .read-container {
-    background: linear-gradient(to right, #4c7a4c, #a6dfa6);
+    background: linear-gradient(to right, #3a5271, #7fccd6);
     border: solid;
     border-width: 1px;
 }
 
 .unread-container {
-    background: linear-gradient(to right, #bababa, #969696);
+    background: linear-gradient(to right, #7e7e7e, #c1c1c1);
     border: solid;
     border-width: 1px;
 }
@@ -121,7 +182,6 @@ header {
 }
 
 .display-tile {
-    /*background-image: linear-gradient(to right,  #406840, #a6dfa6);*/
     padding: 40px 30px;
     border-radius: 5px;
     box-shadow: 7px 7px 7px -6px gray;
@@ -135,7 +195,9 @@ header {
 
 .tile-heading {
     font-size: 1.953rem;
+    padding-bottom: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 3px -3px white;
 }
 
 .tile-field {
@@ -163,13 +225,6 @@ header {
     align-items: center;
 }
 
-input[type="search"] {
-    width: 80%;
-    height: 35px;
-    font-size: 1.25rem;
-    padding: 18px 15px;
-}
-
 select {
     padding: 5px;
     font-size: 1rem;
@@ -189,7 +244,7 @@ select {
     right: 20px;
     z-index: 1000;
     outline: transparent;
-    background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%);
+    background: linear-gradient(135deg, #fc604b 0%, #de2b15 100%);
     color: #fff;
     box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
 }
@@ -237,7 +292,6 @@ select {
     border-radius: 50%;
 }
 
-
 .form-container {
     width: 100vw;
     height: 100vh;
@@ -251,8 +305,8 @@ select {
     align-items: center;
 }
 
-form {
-    color: black;
+.book-form {
+    color: #de2b15;
     margin-right: auto;
     margin-left: auto;
     width: max-content;
@@ -264,41 +318,38 @@ form {
     text-align: start;
     padding: 50px;
     border: solid 1px #d3d3d3;
-    border-radius: 5px;
+    border-radius: 30px;
     position: relative;
     background-color: #fff;
     /*overflow-y: scroll;*/
 
 }
 
-form input {
+.book-form input {
     padding: 7px;
     font-size: 1.25rem;
     width: 350px;
 
 }
 
-form label {
+.book-form label {
     display: inline-block;
     text-align: right;
     width: 80px
 }
 
-form > p {
+.book-form > p {
     margin-bottom: 20px;
+    color: black;
 }
 
-form > h2 {
+.book-form > h2 {
     margin-bottom: 30px;
-}
-
-.form-header {
+    font-size: 1.953rem;
+    padding-bottom: 15px;
+    box-shadow: 0 5px 7px -6px gray;
     text-align: center;
 }
-
-/*.form-key {*/
-/*    text-align: right;*/
-/*}*/
 
 label {
     display: inline-block;
@@ -309,15 +360,36 @@ label {
 
 textarea {
     width: 350px;
-    height: 75px;
+    height: 100px;
     vertical-align: top;
-}
-.add-book {
-    align-self: end;
-    padding: 10px 30px;
-    font-size: 1.563rem;
+    padding: 10px;
+    font-size: 1rem;
 }
 
+.add-book {
+    align-self: end;
+    padding: 10px 40px;
+    font-weight: bold;
+    font-size: 1.563rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #de2b15;
+    color: #ffffff;
+}
+
+.add-book:hover {
+    align-self: end;
+    font-weight: bold;
+    padding: 10px 40px;;
+    font-size: 1.563rem;
+    outline: solid;
+    outline-color: #de2b15;
+    outline-width: 2px;
+    border-radius: 25px;
+    background-color: white;
+    color: #de2b15;
+    transition: all .2s;
+}
 
 /* Radio Button */
 
@@ -325,6 +397,23 @@ ul {
     position: absolute;
     bottom: 15px;
     right: -20px;
+}
+
+/*input[type="textarea"]:active {}*/
+/*background-color: aliceblue;*/
+/*box-shadow: 3px 3px 5px #0e0e6f;*/
+
+input[type="number"], input[type="date"], input[type="text"], textarea, select {
+    border: none;
+    outline: solid 1px;
+}
+
+input[type="number"]:focus, input[type="date"]:focus, input[type="text"]:focus, textarea:focus, select:focus {
+    /*border: solid 1px #de2b15;*/
+    border: none;
+    outline: solid 1px #de2b15;
+    /*border-color: #de2b15;*/
+    /*border: 1px*/
 }
 
 input[type="checkbox"] {
@@ -375,6 +464,7 @@ input[type="checkbox"] {
     height: 24px;
     border-radius: 12px;
     border: 2px solid black;
+    outline: 2px solid black;
     background: #bcbcbc;
     transition: all 0.4s;
     border: none;
@@ -393,7 +483,7 @@ input[type="checkbox"]::before {
     content: '';
     position: absolute;
     top: 4px;
-    left: 14%;
+    left: 11%;
     transition: all 0.4s;
 }
 
@@ -405,12 +495,15 @@ input[type="checkbox"]::before {
 input[type="checkbox"]:checked {
     background-color: #fbfbfb;
     transition: all 0.4s;
+    outline: none;
 }
 
 input[type="checkbox"]:checked::before {
     left: 32%;
     transition: all 0.4s;
     background-color: #106ed4;
+    outline: white;
+
 }
 
 /*
@@ -425,6 +518,7 @@ input[type="checkbox"] ~ label .on, input[type="checkbox"]:checked ~ label .off 
 input[type="checkbox"] ~ label .off, input[type="checkbox"]:checked ~ label .on {
     opacity: 1;
 }
+
 
 /*
    make the focus outline a bit more subtle on Chrome, rather than the
