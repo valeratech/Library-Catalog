@@ -17,9 +17,6 @@ h1 {
     font-size: 3.052rem;
     color: white;
     letter-spacing: 2px;
-    /*outline: 3px solid white;*/
-    /*outline-offset: .25em;*/
-    display: inline-block;
     margin: 0.25em 0 0.5em;
 }
 
@@ -102,6 +99,52 @@ input[type="search"] {
     padding: 0 20px;
 }
 
+.display-info {
+    top: 5px;
+    left: 8px;
+    color: #1bdf76;
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: absolute;
+    transition-property: content;
+    transition-duration: 4s;
+}
+
+.display-info:hover:before {
+    content: "Flip card for summary";
+    background-color: #de2b15;
+    color: white;
+    font-size: 1rem;
+    padding: 5px;
+    width: 170px;
+    position: absolute;
+    top: -18px;
+    left: 23px;
+}
+
+.collapse-info {
+    top: 5px;
+    left: 8px;
+    color: #fe1736;
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: absolute;
+    transition-property: content;
+    transition-duration: 4s;
+}
+
+.collapse-info:hover:before {
+    content: "Flip card for book info";
+    background-color: #de2b15;
+    color: white;
+    font-size: 1rem;
+    padding: 5px;
+    width: 170px;
+    position: absolute;
+    top: -25px;
+    left: 23px;
+}
+
 .fa{
     box-sizing: border-box;
     padding: 10px;
@@ -162,7 +205,7 @@ input[type="search"] {
 }
 
 .read-container {
-    background: linear-gradient(to right, #3a5271, #7fccd6);
+    background: linear-gradient(to right, #3a5271, #8bd8e2);
     border: solid;
     border-width: 1px;
 }
@@ -185,12 +228,15 @@ input[type="search"] {
     border-radius: 5px;
     box-shadow: 7px 7px 7px -6px gray;
     position: relative;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
 .display-tile:hover {
     box-shadow: 15px 15px 17px 1px gray;
     transition: all .1s ease;
 }
+
+
 
 .tile-heading {
     font-size: 1.953rem;
@@ -243,7 +289,7 @@ select {
     right: 20px;
     z-index: 1000;
     outline: transparent;
-    background: linear-gradient(135deg, #fc604b 0%, #de2b15 100%);
+    background: linear-gradient(135deg, #fb533c 0%, #de2b15 100%);
     color: #fff;
     box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
 }
@@ -315,7 +361,7 @@ select {
     flex-direction: column;
     font-size: 1rem;
     text-align: start;
-    padding: 50px;
+    padding: 60px 70px;
     border: solid 1px #d3d3d3;
     border-radius: 30px;
     position: relative;
@@ -324,10 +370,11 @@ select {
 
 }
 
-.book-form input {
+.book-form input, textarea {
     padding: 7px;
     font-size: 1.25rem;
     width: 350px;
+    border-radius: 5px;
 
 }
 
@@ -387,7 +434,7 @@ textarea {
     border-radius: 25px;
     background-color: white;
     color: #de2b15;
-    transition: all .2s;
+    transition: all .15s;
 }
 
 /* Radio Button */
@@ -518,11 +565,12 @@ input[type="checkbox"] ~ label .off, input[type="checkbox"]:checked ~ label .on 
     opacity: 1;
 }
 
+.display-tile-back {
+    font-size: 1.25rem;
+    display: none;
+}
 
-/*
-   make the focus outline a bit more subtle on Chrome, rather than the
-   default heavy blue outline
-*/
+
 
 
 

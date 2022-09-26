@@ -69,6 +69,8 @@ function createTile(read) {
     const myArticle = document.querySelector('.display-tiles');
 
     const myTile = document.createElement('div');
+    const myTileFront = document.createElement('div');
+    const myTileBack = document.createElement('div');
     const myTitle = document.createElement('h3');
     const myAuthor = document.createElement('p');
     const myPages = document.createElement('p');
@@ -77,6 +79,9 @@ function createTile(read) {
     const myUl = document.createElement('ul');
     const insertDate = new Date();
     const removeIcon = document.createElement('span');
+    const infoIcon = document.createElement('span');
+    const collapseInfo = document.createElement('span');
+    const mySummary = document.createElement('p');
 
     myTile.className = 'display-tile';
     myTitle.className = 'tile-heading';
@@ -85,20 +90,26 @@ function createTile(read) {
     myPubDate.className = 'tile-field';
     myInsertDate.className = 'tile-field';
     removeIcon.className = 'remove-book';
+    collapseInfo.className = 'collapse-info';
+    infoIcon.className = 'display-info';
+    myTileFront.className = 'display-tile-front';
+    myTileBack.className = 'display-tile-back';
 
     myLibrary.forEach((book) => {
-
-        myTitle.textContent = book.title;
-        myAuthor.innerHTML = `Author:  ${book.author}`;
-        myPages.textContent = `Pages:  ${book.pages}`;
-        myPubDate.textContent = `Date Published:  ${book.date}`;
-        myInsertDate.textContent = `Date Entered: ${insertDate.getFullYear()}-${insertDate.getMonth()}-${insertDate.getDate()}`
-        removeIcon.innerHTML = `&#x2715`
+        myTitle.innerHTML = book.title;
+        myAuthor.innerHTML = `Author:  <strong>${book.author}</strong>`;
+        myPages.innerHTML = `Pages:  <strong>${book.pages}</strong>`;
+        myPubDate.innerHTML = `Date Published:  <strong>${book.date}</strong>`;
+        myInsertDate.innerHTML = `Date Entered: <strong>${insertDate.getFullYear()}-${insertDate.getMonth()}-${insertDate.getDate()}</strong>`;
+        removeIcon.innerHTML = `&#x2715`;
+        infoIcon.innerHTML = `&#9432;`;
+        collapseInfo.innerHTML = `&#9432;`;
+        mySummary.innerHTML = `<i>${book.summary}</i>`;
 
         if (read) {
             myUl.innerHTML = `<li><input type="checkbox" name="power" id="power" checked>
                           <label for="power"><span class="on">Read</span><span class="off">Unread</span></label></li>`;
-            myTile.style.backgroundImage = 'linear-gradient(135deg, #3a5271 0%, #7fccd6 100%)';
+            myTile.style.backgroundImage = 'linear-gradient(135deg, #3a5271 0%, #8bd8e2 100%)';
 
         } else {
             myUl.innerHTML = `<li><input type="checkbox" name="power" id="power">
@@ -109,21 +120,23 @@ function createTile(read) {
             myPages.style.color = '#201e1e';
             myPubDate.style.color = '#201e1e';
             myInsertDate.style.color = '#201e1e';
+            mySummary.style.color = '#201e1e';
         }
 
-        myTile.appendChild(myTitle);
-        myTile.appendChild(myAuthor);
-        myTile.appendChild(myPages);
-        myTile.appendChild(myPubDate);
-        myTile.appendChild(myInsertDate);
-        myTile.appendChild(myUl);
-        myTile.appendChild(removeIcon);
+        myTileFront.appendChild(myTitle);
+        myTileFront.appendChild(myAuthor);
+        myTileFront.appendChild(myPages);
+        myTileFront.appendChild(myPubDate);
+        myTileFront.appendChild(myInsertDate);
+        myTileFront.appendChild(myUl);
+        myTileFront.appendChild(removeIcon);
+        myTileFront.appendChild(infoIcon);
+        myTileBack.appendChild(mySummary);
+        myTileBack.appendChild(collapseInfo);
+        myTile.appendChild(myTileFront)
+        myTile.appendChild(myTileBack)
         myArticle.appendChild(myTile);
 
-        const mySummary = document.createElement('p');
-        mySummary.textContent = `${book.summary}`
-        mySummary.textContent = `${book.summary}`
-        mySummary.className = 'tile-field';
     });
 }
 
@@ -134,14 +147,14 @@ addBook.addEventListener('click', addBookToLibrary);
 // Changes the state of the myLibrary array
 const displayTiles = document.querySelector('.display-tiles');
 displayTiles.addEventListener('change', (e) => {
-    const parent = e.target.parentNode.parentNode.parentNode.parentNode;
-    const child = e.target.parentNode.parentNode.parentNode;
+    const parent = e.target.parentNode.parentNode.parentNode.parentNode.parentNode;
+    const child = e.target.parentNode.parentNode.parentNode.parentNode;
     const index = Array.prototype.indexOf.call(parent.children, child);
     /* It has to be background-image, not background-color, for gradients. */
     const pElements = child.querySelectorAll('p');
-    const headElement = child.querySelector('h3')
+    const headElement = child.querySelector('h3');
     if (e.target.checked) {
-        child.style.backgroundImage = 'linear-gradient(135deg, #3a5271 0%, #7fccd6 100%)';
+        child.style.backgroundImage = 'linear-gradient(135deg, #3a5271 0%, #8bd8e2 100%)';
         myLibrary[index].read = true;
         pElements.forEach((paragraph) => {
             paragraph.style.color = '#ffffff';
@@ -162,8 +175,8 @@ displayTiles.addEventListener('change', (e) => {
 // Event listener to remove Book from array and tiles
 displayTiles.addEventListener('click', (e) => {
     /* RETREIVES THE INDEX OF THE SPECIFIC TILES WHERE THE BUTTON IS TOGGLED */
-    const parent = e.target.parentNode.parentNode;
-    const child = e.target.parentNode;
+    const parent = e.target.parentNode.parentNode.parentNode;
+    const child = e.target.parentNode.parentNode;
     const index = Array.prototype.indexOf.call(parent.children, child);
     if (e.target.className === 'remove-book') {
         // remove object from the myLibrary array as well as the DOM element
@@ -192,6 +205,23 @@ closeForm.addEventListener('click', () => {
     form.style.display = 'none';
 })
 
+
+document.addEventListener('click', (e) => {
+    console.log(e.target.className);
+    if (e.target.className === "display-info") {
+        e.target.parentNode.style.transform = 'rotateY(180deg)';
+        // Set the backside of the card/container to display
+        e.target.parentNode.nextElementSibling.style.display = 'block';
+        // Set the frontside of the card/container to not display
+        e.target.parentNode.style.display = 'none';
+    } else if (e.target.className === "collapse-info") {
+        // Set the backside of the card/container to not display
+        e.target.parentNode.style.display = 'none';
+        // Set the frontside of the card/container to display
+        e.target.parentNode.previousElementSibling.style.display = 'block';
+    }
+})
+
 // Book(title, author, pages, date, summary, read, bookID)
 
 const book1 = new createBook('The Art of War', 'Sun Tzu', 256, null, ` The Art Of War has been 
@@ -203,8 +233,7 @@ today.`, false, 1);
 const book2 = new createBook('Dune', 'Frank Herbert', 576, '1965-08-01', `Set on the desert planet Arrakis, Dune is 
 the story of the boy Paul Atreides, who would become the mysterious man known as Muad'Dib. He would avenge the 
 traitorous plot against his noble family--and would bring to fruition humankind's most ancient and unattainable dream.
-A stunning blend of adventure and mysticism, environmentalism and politics, Dune won the first Nebula Award for Best 
-Novel, shared the Hugo Award, and formed the basis of what it undoubtedly the grandest epic in science fiction.`,
+A stunning blend of adventure and mysticism, environmentalism and politics.`,
     true, 2);
 
 let myLibrary = [];
@@ -216,3 +245,4 @@ myLibrary.push(book2);
 createTile(true);
 
 bookCount();
+
