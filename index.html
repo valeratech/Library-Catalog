@@ -29,24 +29,23 @@
     <section class="display">
         <article class="display-key">
             <div class="key-container">
-                <p>Order By:</p>
-                <div class="order-date">
+                <div class="order-date select">
                     <label for="date"></label>
-                    <select id="date" name="date">
+                    <select class="my-select" id="date" name="date">
                         <option value="#">Date Published</option>
                         <option value="#">Date Entered</option>
                     </select>
                 </div>
-                <div class="order-name">
+                <div class="order-name select">
                     <label for="name"></label>
-                    <select id="name" name="sorting">
+                    <select class="my-select" id="name" name="sorting">
                         <option value="#">Ascending</option>
                         <option value="#">Descending</option>
                     </select>
                 </div>
-                <div class="order-read">
+                <div class="order-read select">
                     <label for="read"></label>
-                    <select id="read" name="read">
+                    <select class="my-select" id="read" name="read">
                         <option value="#">All</option>
                         <option value="#">Read</option>
                         <option value="#">Not read</option>
@@ -70,7 +69,7 @@
     </section>
     <section class="form-container">
         <form class="book-form">
-            <h2 class="form-header">ADD BOOK TO LIBRARY</h2>
+            <h2 class="form-header">ADD TO CATALOG</h2>
             <p class="form-key">Required fields are followed by <strong><abbr title="required" aria-label="required">*</abbr></strong>.</p>
             <p>
                 <label for="title">
@@ -104,13 +103,13 @@
                 <label for="summary">
                     <span>Summary: </span>
                 </label>
-                <textarea id="summary" name="summary" max="500"></textarea>
+                <textarea id="summary" name="summary" max="300"></textarea>
             </p>
-            <p>
+            <p class="form-select">
                 <label for="status">
                     <span>Status: </span>
                 </label>
-                <select class="status" id="status" name="isread">
+                <select class="status my-select" id="status" name="isread">
                     <option value=true>Read</option>
                     <option value=false>Not Read</option>
                 </select>

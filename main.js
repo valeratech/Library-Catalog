@@ -1,3 +1,28 @@
+// Book(title, author, pages, date, summary, read, bookID)
+
+
+const book1 = new createBook('The Art of War', 'Sun Tzu', 256, null, ` The Art Of War has been 
+considered the definitive text on military strategy and warfare ever since being written in ancient China around 500 BC, 
+inspiring businesses, athletes, and of course generals to beat their opponents and competition the right way until 
+today.`, false, 1);
+
+
+const book2 = new createBook('Dune', 'Frank Herbert', 576, '1965-08-01', `Set on the desert planet Arrakis, Dune is 
+the story of the boy Paul Atreides, who would become the mysterious man known as Muad'Dib. He would avenge the 
+traitorous plot against his noble family--and would bring to fruition humankind's most ancient and unattainable dream.
+A stunning blend of adventure and mysticism, environmentalism and politics.`,
+    true, 2);
+
+let myLibrary = [];
+let bookID = 20220
+
+myLibrary.push(book1);
+createTile(false);
+myLibrary.push(book2);
+createTile(true);
+
+bookCount();
+console.log(myLibrary)
 
 function createBook(title, author, pages, date, summary, read, bookID) {
     this.title = title;
@@ -10,7 +35,7 @@ function createBook(title, author, pages, date, summary, read, bookID) {
 }
 
 function addBookToLibrary(e) {
-    // e.preventDefault();
+    e.preventDefault();
     // The :scope pseudo-class restores the expected behavior, only matching selectors on descendants of the base element:
     const form = document.querySelector('.book-form');
     const inputs = form.querySelectorAll(':scope input')
@@ -30,6 +55,7 @@ function addBookToLibrary(e) {
     createTile(read);
     addRemoveMsg();
     bookCount();
+    console.log(myLibrary)
 }
 
 function addRemoveMsg() {
@@ -97,10 +123,10 @@ function createTile(read) {
 
     myLibrary.forEach((book) => {
         myTitle.innerHTML = book.title;
-        myAuthor.innerHTML = `Author:  <strong>${book.author}</strong>`;
-        myPages.innerHTML = `Pages:  <strong>${book.pages}</strong>`;
-        myPubDate.innerHTML = `Date Published:  <strong>${book.date}</strong>`;
-        myInsertDate.innerHTML = `Date Entered: <strong>${insertDate.getFullYear()}-${insertDate.getMonth()}-${insertDate.getDate()}</strong>`;
+        myAuthor.innerHTML = `Author:  ${book.author}`;
+        myPages.innerHTML = `Pages:  ${book.pages}`;
+        myPubDate.innerHTML = `Date Published:  ${book.date}`;
+        myInsertDate.innerHTML = `Date Entered: ${insertDate.getFullYear()}-${insertDate.getMonth()}-${insertDate.getDate()}`;
         removeIcon.innerHTML = `&#x2715`;
         infoIcon.innerHTML = `&#9432;`;
         collapseInfo.innerHTML = `&#9432;`;
@@ -170,6 +196,7 @@ displayTiles.addEventListener('change', (e) => {
         headElement.style.color = '#201e1e';
         bookCount();
     }
+    console.log(myLibrary)
 });
 
 // Event listener to remove Book from array and tiles
@@ -207,42 +234,42 @@ closeForm.addEventListener('click', () => {
 
 
 document.addEventListener('click', (e) => {
-    console.log(e.target.className);
     if (e.target.className === "display-info") {
-        e.target.parentNode.style.transform = 'rotateY(180deg)';
+        e.target.parentNode.parentNode.style.transform = 'rotateY(180deg)';
+        e.target.parentNode.parentNode.style.transform = 'preserve-3d';
+        e.target.parentNode.parentNode.style.transition = 'transform 0.8s';
+        e.target.parentNode.nextElementSibling.style.transform = 'rotateY(180deg)';
+
         // Set the backside of the card/container to display
         e.target.parentNode.nextElementSibling.style.display = 'block';
         // Set the frontside of the card/container to not display
         e.target.parentNode.style.display = 'none';
     } else if (e.target.className === "collapse-info") {
-        // Set the backside of the card/container to not display
-        e.target.parentNode.style.display = 'none';
+        e.target.parentNode.parentNode.style.transform = 'rotateY(360deg)';
+        e.target.parentNode.parentNode.style.transform = 'preserve-3d';
+        e.target.parentNode.parentNode.style.transition = 'transform 0.8s';
         // Set the frontside of the card/container to display
         e.target.parentNode.previousElementSibling.style.display = 'block';
+        // Set the backside of the card/container to not display
+        e.target.parentNode.style.display = 'none';
     }
 })
 
-// Book(title, author, pages, date, summary, read, bookID)
+// Form validation below
+const signUpForm = document.getElementById('signUpForm');
+const emailField = document.getElementById('emailField');
+const okButton = document.getElementById('okButton');
 
-const book1 = new createBook('The Art of War', 'Sun Tzu', 256, null, ` The Art Of War has been 
-considered the definitive text on military strategy and warfare ever since being written in ancient China around 500 BC, 
-inspiring businesses, athletes, and of course generals to beat their opponents and competition the right way until 
-today.`, false, 1);
+emailField.addEventListener('keyup', function (event) {
+    isValidEmail = emailField.checkValidity();
 
+    if ( isValidEmail ) {
+        okButton.disabled = false;
+    } else {
+        okButton.disabled = true;
+    }
+});
 
-const book2 = new createBook('Dune', 'Frank Herbert', 576, '1965-08-01', `Set on the desert planet Arrakis, Dune is 
-the story of the boy Paul Atreides, who would become the mysterious man known as Muad'Dib. He would avenge the 
-traitorous plot against his noble family--and would bring to fruition humankind's most ancient and unattainable dream.
-A stunning blend of adventure and mysticism, environmentalism and politics.`,
-    true, 2);
-
-let myLibrary = [];
-let bookID = 20220
-
-myLibrary.push(book1);
-createTile(false);
-myLibrary.push(book2);
-createTile(true);
-
-bookCount();
-
+okButton.addEventListener('click', function (event) {
+    signUpForm.submit();
+});

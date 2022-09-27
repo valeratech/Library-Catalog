@@ -120,11 +120,17 @@ input[type="search"] {
     position: absolute;
     top: -18px;
     left: 23px;
+    text-shadow: none;
 }
 
+.display-info:hover {
+    text-shadow: 1px 1px 2px grey, #1bdf76 1px 1px 3px;
+}
+
+
 .collapse-info {
-    top: 5px;
-    left: 8px;
+    top: -36px;
+    left: -23px;
     color: #fe1736;
     font-size: 1.25rem;
     font-weight: bold;
@@ -143,6 +149,12 @@ input[type="search"] {
     position: absolute;
     top: -25px;
     left: 23px;
+    text-shadow: none;
+}
+
+.collapse-info:hover {
+    text-shadow: 1px 1px 2px grey, #fe1736 1px 1px 3px;
+    cursor: pointer;
 }
 
 .fa{
@@ -186,7 +198,7 @@ input[type="search"] {
 
 .display-key {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-template-rows: minmax(65px, 1fr);
     background-color: #a0a0a0;
     margin-bottom: 50px;
@@ -229,6 +241,7 @@ input[type="search"] {
     box-shadow: 7px 7px 7px -6px gray;
     position: relative;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    min-height: 320px;
 }
 
 .display-tile:hover {
@@ -270,15 +283,6 @@ input[type="search"] {
     align-items: center;
 }
 
-select {
-    padding: 5px;
-    font-size: 1rem;
-    vertical-align: top;
-}
-
-/*Button config below*/
-
-
 .new-book {
     border: none;
     height: 50px;
@@ -289,7 +293,7 @@ select {
     right: 20px;
     z-index: 1000;
     outline: transparent;
-    background: linear-gradient(135deg, #fb533c 0%, #de2b15 100%);
+    background: linear-gradient(135deg, #ea3c29 0%, #de2b15 100%);
     color: #fff;
     box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
 }
@@ -350,8 +354,12 @@ select {
     align-items: center;
 }
 
-.book-form {
+.book-form h2 {
     color: #de2b15;
+}
+
+.book-form {
+    color: black;
     margin-right: auto;
     margin-left: auto;
     width: max-content;
@@ -367,7 +375,6 @@ select {
     position: relative;
     background-color: #fff;
     /*overflow-y: scroll;*/
-
 }
 
 .book-form input, textarea {
@@ -385,7 +392,7 @@ select {
 }
 
 .book-form > p {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: black;
 }
 
@@ -445,16 +452,20 @@ ul {
     right: -20px;
 }
 
+input[type="checkbox"], input[type="date"], select, button, span {
+    cursor: pointer;
+}
+
 /*input[type="textarea"]:active {}*/
 /*background-color: aliceblue;*/
 /*box-shadow: 3px 3px 5px #0e0e6f;*/
 
-input[type="number"], input[type="date"], input[type="text"], textarea, select {
+input[type="number"], input[type="date"], input[type="text"], textarea {
     border: none;
     outline: solid 1px;
 }
 
-input[type="number"]:focus, input[type="date"]:focus, input[type="text"]:focus, textarea:focus, select:focus {
+input[type="number"]:focus, input[type="date"]:focus, input[type="text"]:focus, textarea:focus {
     /*border: solid 1px #de2b15;*/
     border: none;
     outline: solid 1px #de2b15;
@@ -570,7 +581,81 @@ input[type="checkbox"] ~ label .off, input[type="checkbox"]:checked ~ label .on 
     display: none;
 }
 
+:root {
+    /*--background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);*/
+    --gray: #34495e;
+    --darkgray: #e9e9e9;
+}
 
+.my-select {
+    /* Reset Select */
+    font-size: 1rem;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    padding: 0 1em;
+    color: black;
+    /*background-color: var(--darkgray);*/
+    background-color: var(--darkgray);
+    background-image: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
 
+.form-select {
+    position: relative;
+    display: flex;
+    width: 240px;
+    height: 35px;
+    border-radius: .25em;
+    overflow: hidden;
+}
+
+/*!* Remove IE arrow *!*/
+/*select::-ms-expand {*/
+/*    display: none;*/
+/*}*/
+
+option {
+    background-color: #ffffff;
+    border-radius: 3px;
+}
+
+option:hover {
+    background-color: #de2b15;
+    border-radius: 3px;
+}
+
+/* Custom Select wrapper */
+.select {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 35px;
+    border-radius: .25em;
+    overflow: hidden;
+}
+/* Arrow */
+.select::after, .form-select:after {
+    content: '\25BC';
+    position: absolute;
+    top: -6px;
+    right: 0;
+    padding: 1em;
+    background-color: #bababa;
+    transition: .25s all ease;
+    pointer-events: none;
+}
+/* Transition */
+.select:hover::after, .form-select:hover::after {
+    color: #de2b15;
+}
+
+.inline {
+    display: inline;
+}
 
 
