@@ -31,7 +31,7 @@ header {
 }
 
 .search {
-    background: url("/home/ryan/JavaScript/Odin/Library-Catalog/library_animated.jpg");
+    background: url("library_animated.jpg");
     background-size: cover;
     display: flex;
     flex-flow: wrap;
