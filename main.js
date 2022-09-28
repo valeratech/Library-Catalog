@@ -13,6 +13,17 @@ traitorous plot against his noble family--and would bring to fruition humankind'
 A stunning blend of adventure and mysticism, environmentalism and politics.`,
     true, 2);
 
+const book3 = new createBook('Pride and Prejudice', 'Jane Austen', 276, '1813-01-28', `Th
+e story follows the main character, Elizabeth Bennet, as she deals with issues of manners, upbringing, morality, 
+education, and marriage in the society of the landed gentry of the British Regency. Elizabeth is the second of five 
+daughters of a country gentleman, Mr. Bennet, living in Longbourn.`, true, 3);
+
+const book4 = new createBook('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 223,
+    '1997-06-26', `Harry Potter has no idea how famous he is. That's because he's being raised by his 
+    miserable aunt and uncle who are terrified Harry will learn that he's really a wizard, just as his parents were. 
+    But everything changes when Harry is summoned to attend an infamous school for wizards, and he begins to discover 
+    some clues about his illustrious birthright.`, false, 4);
+
 let myLibrary = [];
 let bookID = 20220
 
@@ -20,6 +31,10 @@ myLibrary.push(book1);
 createTile(false);
 myLibrary.push(book2);
 createTile(true);
+myLibrary.push(book3);
+createTile(false);
+myLibrary.push(book4);
+createTile(false);
 
 bookCount();
 console.log(myLibrary)

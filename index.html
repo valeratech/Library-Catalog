@@ -76,14 +76,14 @@
                     <span>Title:</span>
                     <strong><abbr title="required" aria-label="required">*</abbr></strong>
                 </label>
-                <input type="text" id="title" name="title" required>
+                <input type="text" id="title" name="title" maxlength="80"required>
             </p>
             <p>
                 <label for="author">
                     <span>Author:</span>
                     <strong><abbr title="author" aria-label="required">*</abbr></strong>
                 </label>
-                <input type="text" id="author" name="author" required>
+                <input type="text" id="author" name="author" maxlength="40" required>
             </p>
             <p>
                 <label for="pages">
@@ -97,13 +97,13 @@
                     <span>Date:</span>
                     <strong><abbr title="required" aria-label="required">*</abbr></strong>
                 </label>
-                <input type="date" id="pub-date" name="pub-date" min="0000-01-01" required>
+                <input type="date" id="pub-date" name="pub-date" min="0000-00-00" required>
             </p>
             <p>
                 <label for="summary">
                     <span>Summary: </span>
                 </label>
-                <textarea id="summary" name="summary" max="300"></textarea>
+                <textarea id="summary" name="summary" maxlength="300"></textarea>
             </p>
             <p class="form-select">
                 <label for="status">
