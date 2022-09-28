@@ -398,6 +398,10 @@ input[type="search"] {
     color: black;
 }
 
+#form-key {
+    color: red;
+}
+
 .book-form > h2 {
     margin-bottom: 30px;
     font-size: 1.953rem;
@@ -444,6 +448,11 @@ textarea {
     background-color: white;
     color: #de2b15;
     transition: all .15s;
+}
+
+.add-book:active {
+    filter: opacity(55%);
+    transition: all .05s;
 }
 
 /* Radio Button */

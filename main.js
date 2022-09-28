@@ -13,8 +13,8 @@ traitorous plot against his noble family--and would bring to fruition humankind'
 A stunning blend of adventure and mysticism, environmentalism and politics.`,
     true, 2);
 
-const book3 = new createBook('Pride and Prejudice', 'Jane Austen', 276, '1813-01-28', `Th
-e story follows the main character, Elizabeth Bennet, as she deals with issues of manners, upbringing, morality, 
+const book3 = new createBook('Pride and Prejudice', 'Jane Austen', 276, '1813-01-28', `The 
+story follows the main character, Elizabeth Bennet, as she deals with issues of manners, upbringing, morality, 
 education, and marriage in the society of the landed gentry of the British Regency. Elizabeth is the second of five 
 daughters of a country gentleman, Mr. Bennet, living in Longbourn.`, true, 3);
 
@@ -49,28 +49,77 @@ function createBook(title, author, pages, date, summary, read, bookID) {
     this.id = bookID;
 }
 
-function addBookToLibrary(e) {
-    e.preventDefault();
-    // The :scope pseudo-class restores the expected behavior, only matching selectors on descendants of the base element:
+function clearForm() {
     const form = document.querySelector('.book-form');
     const inputs = form.querySelectorAll(':scope input')
-
     const status = document.querySelector('.status');
     const textArea = document.querySelector('textarea')
 
-    const title = inputs[0].value;
-    const author = inputs[1].value;
-    const pages = inputs[2].value;
-    const date = inputs[3].value;
-    const summary = textArea.value;
-    const read = (status.value === 'true'); // convert value to a boolean
+    inputs[0].value = "";
+    inputs[1].value = "";
+    inputs[2].value = "";
+    inputs[3].value = "";
+    textArea.value = "";
+}
 
-    myLibrary.push(new createBook(title, author, pages, date, summary, read, bookID));
-    bookID++;
-    createTile(read);
-    addRemoveMsg();
-    bookCount();
-    console.log(myLibrary)
+const addBook = document.querySelector('.add-book');
+addBook.addEventListener('click', addBookToLibrary);
+
+// const formContainer = document.querySelector('.form-container');
+const bookForm = document.querySelector('.book-form');
+bookForm.addEventListener('mouseover', function (e) {
+    const submitFormButton = document.querySelector('.add-book');
+    const isValid = checkValidation();
+    if (isValid) {
+        submitFormButton.disabled = false;
+    } else {
+        submitFormButton.disabled = true;
+    }
+});
+
+function checkValidation() {
+    // Form validation below
+    //form
+    //inputs
+    const formTitle = document.querySelector('.form-title');
+    const formAuthor = document.querySelector('.form-author');
+    const formPages = document.querySelector('.form-pages');
+    const formDate = document.querySelector('.form-date');
+    const isValid = bookForm.checkValidity() && formAuthor.checkValidity() && formPages.checkValidity() && formDate.checkValidity();
+    return isValid;
+}
+
+function addBookToLibrary(e) {;
+    e.preventDefault();
+    const isValid = checkValidation();
+    console.log(isValid)
+    if (isValid) {
+        // The :scope pseudo-class restores the expected behavior, only matching selectors on descendants of the base element:
+        const form = document.querySelector('.book-form');
+        const inputs = form.querySelectorAll(':scope input')
+
+        const status = document.querySelector('.status');
+        const textArea = document.querySelector('textarea')
+
+        const title = inputs[0].value;
+        const author = inputs[1].value;
+        const pages = inputs[2].value;
+        const date = inputs[3].value;
+        const summary = textArea.value;
+        const read = (status.value === 'true'); // convert value to a boolean
+
+        myLibrary.push(new createBook(title, author, pages, date, summary, read, bookID));
+        bookID++;
+        createTile(read);
+        addRemoveMsg();
+        bookCount();
+        console.log(myLibrary)
+        clearForm();
+    } else {
+        console.log('hi')
+        const formKey = document.querySelector('.form-key');
+        formKey.style.color = 'red';
+    }
 }
 
 function addRemoveMsg() {
@@ -181,9 +230,6 @@ function createTile(read) {
     });
 }
 
-const addBook = document.querySelector('.add-book');
-addBook.addEventListener('click', addBookToLibrary);
-
 /* RETREIVES THE INDEX OF THE SPECIFIC TILES WHERE THE BUTTON IS TOGGLED */
 // Changes the state of the myLibrary array
 const displayTiles = document.querySelector('.display-tiles');
@@ -270,21 +316,8 @@ document.addEventListener('click', (e) => {
     }
 })
 
-// Form validation below
-const signUpForm = document.getElementById('signUpForm');
-const emailField = document.getElementById('emailField');
-const okButton = document.getElementById('okButton');
 
-emailField.addEventListener('keyup', function (event) {
-    isValidEmail = emailField.checkValidity();
 
-    if ( isValidEmail ) {
-        okButton.disabled = false;
-    } else {
-        okButton.disabled = true;
-    }
-});
-
-okButton.addEventListener('click', function (event) {
-    signUpForm.submit();
-});
+// okButton.addEventListener('click', function (event) {
+//     signUpForm.submit();
+// });

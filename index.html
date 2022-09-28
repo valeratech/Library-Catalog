@@ -68,36 +68,36 @@
         </article>
     </section>
     <section class="form-container">
-        <form class="book-form">
+        <form class="book-form" method="post" action="#">
             <h2 class="form-header">ADD TO CATALOG</h2>
-            <p class="form-key">Required fields are followed by <strong><abbr title="required" aria-label="required">*</abbr></strong>.</p>
+            <p id="form-key">Required fields are followed by <strong><abbr title="required" aria-label="required">*</abbr></strong>.</p>
             <p>
                 <label for="title">
                     <span>Title:</span>
                     <strong><abbr title="required" aria-label="required">*</abbr></strong>
                 </label>
-                <input type="text" id="title" name="title" maxlength="80"required>
+                <input class="form-title" type="text" id="title" name="title" maxlength="80"required>
             </p>
             <p>
                 <label for="author">
                     <span>Author:</span>
                     <strong><abbr title="author" aria-label="required">*</abbr></strong>
                 </label>
-                <input type="text" id="author" name="author" maxlength="40" required>
+                <input class="form-author" type="text" id="author" name="author" maxlength="40" required>
             </p>
             <p>
                 <label for="pages">
                     <span>Pages:</span>
                     <strong><abbr title="required" aria-label="required">*</abbr></strong>
                 </label>
-                <input type="number" id="pages" name="pages" min="1" max="50000" required>
+                <input class="form-pages" type="number" id="pages" name="pages" min="1" max="50000" required>
             </p>
             <p>
                 <label for="pub-date">
                     <span>Date:</span>
                     <strong><abbr title="required" aria-label="required">*</abbr></strong>
                 </label>
-                <input type="date" id="pub-date" name="pub-date" min="0000-00-00" required>
+                <input class="form-date" type="date" id="pub-date" name="pub-date" min="0000-00-00" required>
             </p>
             <p>
                 <label for="summary">
@@ -114,7 +114,7 @@
                     <option value=false>Not Read</option>
                 </select>
             </p>
-            <button class="add-book" type="submit">Add</button>
+            <button class="add-book" type="button" disabled>Add</button>
             <span class="close-form">&#x2715</span>
         </form>
     </section>
