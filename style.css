@@ -668,7 +668,7 @@ option:hover {
     display: inline;
 }
 
-.book-form > input:focus, textarea:focus {
+.book-form input:focus, textarea:focus {
     background-color: aliceblue;
     box-shadow: 3px 3px 5px #0e0e6f;
 }
