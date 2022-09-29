@@ -99,18 +99,18 @@ input[type="search"] {
     padding: 0 20px;
 }
 
-.display-info {
-    top: 5px;
-    left: 8px;
+.display-info i {
+    top: 10px;
+    left: 9px;
     color: #1bdf76;
     font-size: 1.25rem;
-    font-weight: bold;
+    /*font-weight: bold;*/
     position: absolute;
     transition-property: content;
     transition-duration: 4s;
 }
 
-.display-info:hover:before {
+.display-info:hover:before i {
     content: "Flip card for summary";
     background-color: #de2b15;
     color: white;
@@ -123,23 +123,23 @@ input[type="search"] {
     text-shadow: none;
 }
 
-.display-info:hover {
+.display-info:hover i {
     text-shadow: 1px 1px 2px grey, #1bdf76 1px 1px 3px;
 }
 
 
-.collapse-info {
-    top: -36px;
-    left: -23px;
+.collapse-info i {
+    top: -31px;
+    left: -22px;
     color: #fe1736;
     font-size: 1.25rem;
-    font-weight: bold;
+    /*font-weight: bold;*/
     position: absolute;
     transition-property: content;
     transition-duration: 4s;
 }
 
-.collapse-info:hover:before {
+.collapse-info:hover:before i {
     content: "Flip card for book info";
     background-color: #de2b15;
     color: white;
@@ -152,12 +152,11 @@ input[type="search"] {
     text-shadow: none;
 }
 
-.collapse-info:hover {
+.collapse-info:hover i {
     text-shadow: 1px 1px 2px grey, #fe1736 1px 1px 3px;
     cursor: pointer;
 }
-
-.fa{
+.search-bar > .fa {
     box-sizing: border-box;
     padding: 10px;
     width: 50px;
@@ -321,7 +320,7 @@ input[type="search"] {
 .close-form, .remove-book {
     position: absolute;
     top: 14px;
-    right: 14px;
+    right: 19px;
 }
 .close-form:hover, .remove-book:hover {
     transform: rotate(90deg) scale(1.3);
@@ -476,13 +475,13 @@ input[type="number"], input[type="date"], input[type="text"], textarea {
     outline: solid 1px;
 }
 
-input[type="number"]:focus, input[type="date"]:focus, input[type="text"]:focus, textarea:focus {
-    /*border: solid 1px #de2b15;*/
-    border: none;
-    outline: solid 1px #de2b15;
-    /*border-color: #de2b15;*/
-    /*border: 1px*/
-}
+/*input[type="number"]:focus, input[type="date"]:focus, input[type="text"]:focus, textarea:focus {*/
+/*    !*border: solid 1px #de2b15;*!*/
+/*    border: none;*/
+/*    outline: solid 1px #de2b15;*/
+/*    !*border-color: #de2b15;*!*/
+/*    !*border: 1px*!*/
+/*}*/
 
 input[type="checkbox"] {
     -webkit-appearance: none;
@@ -674,5 +673,42 @@ option:hover {
 .inline {
     display: inline;
 }
+
+.book-form > input:focus, textarea:focus {
+    background-color: aliceblue;
+    box-shadow: 3px 3px 5px #0e0e6f;
+}
+
+/*input + span {*/
+/*}*/
+
+form input:invalid:required {
+    outline: #e70000 solid 1px;
+}
+
+input + span {
+    position: relative;
+}
+
+input:valid:required + span::after {
+    font-size: 1.8rem;
+    position: absolute;
+    content: '✓';
+    color: #00bf00;
+    padding: 5px 10px;
+    top: -20px;
+    right: -50px;
+}
+
+input[type=tel]:invalid + span::after {
+    font-size: 14px;
+    position: absolute;
+    content: '(ex. 555-555-5555)';
+    padding: 5px 10px;
+    top: -78px;
+    right: -280px;
+    color: #494949;
+}
+
 
 

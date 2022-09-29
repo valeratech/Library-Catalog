@@ -192,8 +192,8 @@ function createTile(read) {
         myPubDate.innerHTML = `Date Published:  ${book.date}`;
         myInsertDate.innerHTML = `Date Entered: ${insertDate.getFullYear()}-${insertDate.getMonth()}-${insertDate.getDate()}`;
         removeIcon.innerHTML = `&#x2715`;
-        infoIcon.innerHTML = `&#9432;`;
-        collapseInfo.innerHTML = `&#9432;`;
+        infoIcon.innerHTML = `<i id="front-flip" class="fa fa-info-circle"></i>`;
+        collapseInfo.innerHTML = `<i id="back-flip" class="fa fa-info-circle"></i>`;
         mySummary.innerHTML = `<i>${book.summary}</i>`;
 
         if (read) {
@@ -295,24 +295,25 @@ closeForm.addEventListener('click', () => {
 
 
 document.addEventListener('click', (e) => {
-    if (e.target.className === "display-info") {
-        e.target.parentNode.parentNode.style.transform = 'rotateY(180deg)';
-        e.target.parentNode.parentNode.style.transform = 'preserve-3d';
-        e.target.parentNode.parentNode.style.transition = 'transform 0.8s';
-        e.target.parentNode.nextElementSibling.style.transform = 'rotateY(180deg)';
+    console.log(e.target.id)
+    if (e.target.id === "front-flip") {
+        e.target.parentNode.parentNode.parentNode.style.transform = 'rotateY(180deg)';
+        e.target.parentNode.parentNode.parentNode.style.transform = 'preserve-3d';
+        e.target.parentNode.parentNode.parentNode.style.transition = 'transform 0.8s';
+        e.target.parentNode.parentNode.nextElementSibling.style.transform = 'rotateY(180deg)';
 
         // Set the backside of the card/container to display
-        e.target.parentNode.nextElementSibling.style.display = 'block';
+        e.target.parentNode.parentNode.nextElementSibling.style.display = 'block';
         // Set the frontside of the card/container to not display
-        e.target.parentNode.style.display = 'none';
-    } else if (e.target.className === "collapse-info") {
-        e.target.parentNode.parentNode.style.transform = 'rotateY(360deg)';
-        e.target.parentNode.parentNode.style.transform = 'preserve-3d';
-        e.target.parentNode.parentNode.style.transition = 'transform 0.8s';
+        e.target.parentNode.parentNode.style.display = 'none';
+    } else if (e.target.id === "back-flip") {
+        e.target.parentNode.parentNode.parentNode.style.transform = 'rotateY(360deg)';
+        e.target.parentNode.parentNode.parentNode.style.transform = 'preserve-3d';
+        e.target.parentNode.parentNode.parentNode.style.transition = 'transform 0.8s';
         // Set the frontside of the card/container to display
-        e.target.parentNode.previousElementSibling.style.display = 'block';
+        e.target.parentNode.parentNode.previousElementSibling.style.display = 'block';
         // Set the backside of the card/container to not display
-        e.target.parentNode.style.display = 'none';
+        e.target.parentNode.parentNode.style.display = 'none';
     }
 })
 

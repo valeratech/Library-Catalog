@@ -77,6 +77,7 @@
                     <strong><abbr title="required" aria-label="required">*</abbr></strong>
                 </label>
                 <input class="form-title" type="text" id="title" name="title" maxlength="80"required>
+                <span></span>
             </p>
             <p>
                 <label for="author">
@@ -84,20 +85,23 @@
                     <strong><abbr title="author" aria-label="required">*</abbr></strong>
                 </label>
                 <input class="form-author" type="text" id="author" name="author" maxlength="40" required>
+                <span></span>
             </p>
             <p>
                 <label for="pages">
                     <span>Pages:</span>
                     <strong><abbr title="required" aria-label="required">*</abbr></strong>
                 </label>
-                <input class="form-pages" type="number" id="pages" name="pages" min="1" max="50000" required>
+                <input class="form-pages" type="number" id="pages" name="pages" min="1" max="9999" required>
+                <span></span>
             </p>
             <p>
                 <label for="pub-date">
                     <span>Date:</span>
                     <strong><abbr title="required" aria-label="required">*</abbr></strong>
                 </label>
-                <input class="form-date" type="date" id="pub-date" name="pub-date" min="0000-00-00" required>
+                <input class="form-date" type="date" id="pub-date" name="pub-date" min="0001-01-01" required>
+                <span></span>
             </p>
             <p>
                 <label for="summary">
