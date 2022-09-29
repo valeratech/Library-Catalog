@@ -16,7 +16,7 @@ A stunning blend of adventure and mysticism, environmentalism and politics.`,
 const book3 = new createBook('Pride and Prejudice', 'Jane Austen', 276, '1813-01-28', `The 
 story follows the main character, Elizabeth Bennet, as she deals with issues of manners, upbringing, morality, 
 education, and marriage in the society of the landed gentry of the British Regency. Elizabeth is the second of five 
-daughters of a country gentleman, Mr. Bennet, living in Longbourn.`, true, 3);
+daughters of a country gentleman, Mr. Bennet, living in Longbourn.`, false, 3);
 
 const book4 = new createBook('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 223,
     '1997-06-26', `Harry Potter has no idea how famous he is. That's because he's being raised by his 
