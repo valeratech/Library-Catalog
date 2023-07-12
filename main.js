@@ -62,6 +62,15 @@ function clearForm() {
     textArea.value = "";
 }
 
+const filter = document.querySelector('#filter');
+filter.addEventListener('keyup', filterBook);
+
+function filterBook(e) {
+    const inputBox = filter.value.toLowerCase();
+    console.log(inputBox);
+
+}
+
 const addBook = document.querySelector('#add-book');
 addBook.addEventListener('click', addBookToLibrary);
 
