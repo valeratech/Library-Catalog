@@ -231,7 +231,6 @@ input[type="search"] {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
     grid-gap: 20px;
-
 }
 
 .display-tile {
@@ -418,7 +417,7 @@ textarea {
     font-size: 1rem;
 }
 
-.add-book {
+.add-book-style {
     align-self: end;
     padding: 10px 40px;
     font-weight: bold;
@@ -429,7 +428,7 @@ textarea {
     color: #ffffff;
 }
 
-.add-book:hover {
+.add-book-style:hover {
     align-self: end;
     font-weight: bold;
     padding: 10px 40px;;
@@ -443,10 +442,24 @@ textarea {
     transition: all .15s;
 }
 
-.add-book:active {
+.add-book-style:active {
     filter: opacity(55%);
     transition: all .05s;
 }
+
+.add-book-disable {
+    align-self: end;
+    padding: 10px 40px;
+    font-weight: bold;
+    font-size: 1.563rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #de2b15;
+    color: #ffffff;
+    filter: grayscale(100%);
+    cursor: not-allowed;
+}
+
 
 /* Radio Button */
 

@@ -62,13 +62,13 @@ function clearForm() {
     textArea.value = "";
 }
 
-const addBook = document.querySelector('.add-book');
+const addBook = document.querySelector('#add-book');
 addBook.addEventListener('click', addBookToLibrary);
 
 // const formContainer = document.querySelector('.form-container');
 const bookForm = document.querySelector('.book-form');
 bookForm.addEventListener('mouseover', function (e) {
-    const submitFormButton = document.querySelector('.add-book');
+    const submitFormButton = document.querySelector('#add-book');
     const isValid = checkValidation();
     if (isValid) {
         submitFormButton.disabled = false;
@@ -85,14 +85,15 @@ function checkValidation() {
     const formAuthor = document.querySelector('.form-author');
     const formPages = document.querySelector('.form-pages');
     const formDate = document.querySelector('.form-date');
+    const addBook = document.querySelector('#add-book');
     const isValid = bookForm.checkValidity() && formAuthor.checkValidity() && formPages.checkValidity() && formDate.checkValidity();
+    isValid ? addBook.className = 'add-book-style' : addBook.className = 'add-book-disable';
     return isValid;
 }
 
 function addBookToLibrary(e) {;
     e.preventDefault();
     const isValid = checkValidation();
-    console.log(isValid)
     if (isValid) {
         // The :scope pseudo-class restores the expected behavior, only matching selectors on descendants of the base element:
         const form = document.querySelector('.book-form');
@@ -115,10 +116,10 @@ function addBookToLibrary(e) {;
         bookCount();
         console.log(myLibrary)
         clearForm();
-    } else {
-        console.log('hi')
-        const formKey = document.querySelector('.form-key');
-        formKey.style.color = 'red';
+    // } else {
+    //     console.log('hi')
+    //     const formKey = document.querySelector('.form-key');
+    //     formKey.style.color = 'red';
     }
 }
 
