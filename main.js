@@ -37,7 +37,7 @@ myLibrary.push(book4);
 createTile(false);
 
 bookCount();
-console.log(myLibrary)
+// console.log(myLibrary)
 
 function createBook(title, author, pages, date, summary, read, bookID) {
     this.title = title;
@@ -67,19 +67,36 @@ filter.addEventListener('keyup', filterBook);
 
 function filterBook(e) {
     const inputBox = filter.value.toLowerCase();
-    console.log(inputBox);
     const tiles = document.querySelectorAll('.display-tile-front');
     const tileArray = Array.from(tiles);
     tileArray.forEach(tile => {
         const title = tile.firstElementChild.textContent.toLowerCase();
         const author = tile.firstElementChild.nextElementSibling.textContent.toLowerCase();
-        console.log(title.indexOf(inputBox));
         // console.log(author);
         title.indexOf(inputBox) != -1 || author.indexOf(inputBox) != -1 ? tile.parentElement.style.display = 'block'
             : tile.parentElement.style.display = 'none';
     })
 
 }
+
+const readSelect = document.querySelector('#read');
+readSelect.addEventListener('change', sortRead);
+
+function sortRead() {
+    console.log(readSelect.value);
+    const tiles = document.querySelectorAll('.display-tile');
+    const tileArray = Array.from(tiles);
+    tileArray.forEach(tile => {
+        if (readSelect.value === 'read' && tile.style.backgroundImage.includes('58')) {
+            tile.style.display = 'none';
+        } else if (readSelect.value === 'unread' && tile.style.backgroundImage.includes('227')) {
+            tile.style.display = 'none';
+        } else {
+            tile.style.display = 'block';
+        }
+    })
+}
+
 
 const addBook = document.querySelector('#add-book');
 addBook.addEventListener('click', addBookToLibrary);
@@ -133,7 +150,6 @@ function addBookToLibrary(e) {;
         createTile(read);
         addRemoveMsg();
         bookCount();
-        console.log(myLibrary)
         clearForm();
     // } else {
     //     console.log('hi')
@@ -160,7 +176,7 @@ function addRemoveMsg() {
 function bookCount() {
     // Code not efficient on resources but for demo purposes
     const totalBooks = document.querySelectorAll('.book-log p');
-    totalBooks[0].textContent = `Total Book: ${myLibrary.length}`;
+    totalBooks[0].textContent = `Total Books: ${myLibrary.length}`;
     let readBook = 0;
     let unreadBook = 0;
     for (book of myLibrary) {
@@ -171,7 +187,7 @@ function bookCount() {
         }
     }
     totalBooks[1].textContent = `Read: ${readBook}`;
-    totalBooks[2].textContent = `Not Read: ${unreadBook}`;
+    totalBooks[2].textContent = `Unread: ${unreadBook}`;
 }
 
 
@@ -277,7 +293,6 @@ displayTiles.addEventListener('change', (e) => {
         headElement.style.color = '#201e1e';
         bookCount();
     }
-    console.log(myLibrary)
 });
 
 // Event listener to remove Book from array and tiles
@@ -315,7 +330,6 @@ closeForm.addEventListener('click', () => {
 
 
 document.addEventListener('click', (e) => {
-    console.log(e.target.id)
     if (e.target.id === "front-flip") {
         e.target.parentNode.parentNode.parentNode.style.transform = 'rotateY(180deg)';
         e.target.parentNode.parentNode.parentNode.style.transform = 'preserve-3d';

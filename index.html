@@ -23,7 +23,7 @@
             <h4>Book Log</h4>
             <p>Total book count:</p>
             <p>Read:</p>
-            <p>Not Read:</p>
+            <p>Unread:</p>
         </div>
     </section>
     <section class="display">
@@ -46,9 +46,9 @@
                 <div class="order-read select">
                     <label for="read"></label>
                     <select class="my-select" id="read" name="read">
-                        <option value="#">All</option>
-                        <option value="#">Read</option>
-                        <option value="#">Not read</option>
+                        <option value="all">All</option>
+                        <option value="unread">Read</option>
+                        <option value="read">Unread</option>
                     </select>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="read-container"></div>
                 <p>Read</p>
                 <div class="unread-container"></div>
-                <p>Not Read</p>
+                <p>Unread</p>
             </div>
         </article>
 <!--        <div class="catalog-message">-->
@@ -115,7 +115,7 @@
                 </label>
                 <select class="status my-select" id="status" name="isread">
                     <option value=true>Read</option>
-                    <option value=false>Not Read</option>
+                    <option value=false>Unread</option>
                 </select>
             </p>
             <button id="add-book" class="add-book-disable" type="button" disabled>Add</button>
