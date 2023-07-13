@@ -68,6 +68,12 @@ filter.addEventListener('keyup', filterBook);
 function filterBook(e) {
     const inputBox = filter.value.toLowerCase();
     console.log(inputBox);
+    const tiles = document.querySelectorAll('.tile-heading');
+    const tileArray = Array.from(tiles);
+    tileArray.forEach(tile => {
+        tile.textContent.toLowerCase().indexOf(inputBox) != -1 ? console.log(tile.parentElement.parentElement.style.display = 'block')
+            : console.log(tile.parentElement.parentElement.style.display = 'none');
+    })
 
 }
 
