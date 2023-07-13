@@ -68,11 +68,15 @@ filter.addEventListener('keyup', filterBook);
 function filterBook(e) {
     const inputBox = filter.value.toLowerCase();
     console.log(inputBox);
-    const tiles = document.querySelectorAll('.tile-heading');
+    const tiles = document.querySelectorAll('.display-tile-front');
     const tileArray = Array.from(tiles);
     tileArray.forEach(tile => {
-        tile.textContent.toLowerCase().indexOf(inputBox) != -1 ? console.log(tile.parentElement.parentElement.style.display = 'block')
-            : console.log(tile.parentElement.parentElement.style.display = 'none');
+        const title = tile.firstElementChild.textContent.toLowerCase();
+        const author = tile.firstElementChild.nextElementSibling.textContent.toLowerCase();
+        console.log(title.indexOf(inputBox));
+        // console.log(author);
+        title.indexOf(inputBox) != -1 || author.indexOf(inputBox) != -1 ? tile.parentElement.style.display = 'block'
+            : tile.parentElement.style.display = 'none';
     })
 
 }
