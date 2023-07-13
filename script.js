@@ -34,6 +34,7 @@ some clues about his illustrious birthright.`, false, 4);
 const myLibrary = [];
 let bookID = 20220;
 
+
 myLibrary.push(book1);
 createTile(false);
 myLibrary.push(book2);
@@ -42,7 +43,7 @@ myLibrary.push(book3);
 createTile(false);
 myLibrary.push(book4);
 createTile(false);
-
+bookCount();
 function clearForm() {
     const form = document.querySelector('.book-form');
     const inputs = form.querySelectorAll(':scope input');
@@ -134,6 +135,7 @@ function bookCount() {
     totalBooks[0].textContent = `Total Books: ${myLibrary.length}`;
     let readBook = 0;
     let unreadBook = 0;
+    console.log(totalBooks, readBook, unreadBook);
     myLibrary.forEach((book) => {
         book.read ? readBook++ : unreadBook++;
     });
