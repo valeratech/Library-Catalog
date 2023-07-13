@@ -90,6 +90,7 @@ function checkValidation() {
 }
 
 function addBookToLibrary(e) {
+    console.log(1234)
     e.preventDefault();
     const isValid = checkValidation();
     if (isValid) {
@@ -104,7 +105,7 @@ function addBookToLibrary(e) {
         const date = inputs[3].value;
         const summary = textArea.value;
         const read = status.value === 'true';
-        const newBook = new Book(title, author, pages, date, summary, read, bookID++);
+        const newBook = new createBook(title, author, pages, date, summary, read, bookID++);
 
         myLibrary.push(newBook);
         createTile(read);
