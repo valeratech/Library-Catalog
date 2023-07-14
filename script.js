@@ -79,6 +79,12 @@ function sortRead() {
     });
 }
 
+function sortName() {
+    const tiles = document.querySelectorAll('.display-tiles');
+    console.log(tiles);
+    tiles.forEach(tile => tile.remove());
+}
+
 function checkValidation() {
     const formTitle = document.querySelector('.form-title');
     const formAuthor = document.querySelector('.form-author');
@@ -220,6 +226,9 @@ filter.addEventListener('keyup', filterBook);
 
 const readSelect = document.querySelector('#read');
 readSelect.addEventListener('change', sortRead);
+
+const nameSelect = document.querySelector('#name');
+nameSelect.addEventListener('change', sortName);
 
 const addBook = document.querySelector('#add-book');
 addBook.addEventListener('click', addBookToLibrary);
