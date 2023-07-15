@@ -80,10 +80,31 @@ function sortRead() {
 }
 
 function sortName() {
-    const tiles = document.querySelectorAll('.display-tiles');
-    console.log(tiles);
-    tiles.forEach(tile => tile.remove());
+    const tileContainer = document.querySelector('.display-tiles');
+    const tileList = document.querySelectorAll('.tile-heading');
+    const tileArray = Array.from(tileList);
+    console.log(nameSelect.value);
+    tileArray.sort(function(a, b) {
+        return a.innerHTML == b.innerHTML
+            ? 0
+            : (a.innerHTML > b.innerHTML ? 1 : -1);
+    });
+    tileArray.forEach(tile => {
+        tileContainer.appendChild(tile.parentElement.parentElement);
+    })
 }
+
+//     forEach(tile => {
+//         const tileA = tile.firstElementChild.firstElementChild.textContent.toLowerCase();
+//         const tileB = tile.nextElementSibling.firstElementChild.firstElementChild.textContent.toLowerCase();
+//         console.log(tileA, tileB);
+//         if (tileA < tileB) {
+//             tileContainer.appendChild(tile);
+//         } else {
+//             // tileContainer.insertBefore(tile, tileContainer.firstElementChild);
+//         }
+//     });
+// }
 
 function checkValidation() {
     const formTitle = document.querySelector('.form-title');
