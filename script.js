@@ -83,14 +83,18 @@ function sortName() {
     const tileContainer = document.querySelector('.display-tiles');
     const tileList = document.querySelectorAll('.tile-heading');
     const tileArray = Array.from(tileList);
-    console.log(nameSelect.value);
-    tileArray.sort(function(a, b) {
-        return a.innerHTML == b.innerHTML
+    const azTiles = tileArray.sort(function(a, b) {
+        return a.textContent == b.textContent
             ? 0
-            : (a.innerHTML > b.innerHTML ? 1 : -1);
+            : (a.textContent.toLowerCase() > b.textContent.toLowerCase() ? 1 : -1);
     });
-    tileArray.forEach(tile => {
-        tileContainer.appendChild(tile.parentElement.parentElement);
+    azTiles.forEach(tile => {
+        if (nameSelect.value === 'ascending') {
+            tileContainer.appendChild(tile.parentElement.parentElement);
+        } else {
+            tileContainer.insertBefore(tile.parentElement.parentElement, tileContainer.firstChild);
+
+        }
     })
 }
 
