@@ -382,7 +382,7 @@ input[type="search"] {
 .book-form label {
     display: inline-block;
     text-align: right;
-    width: 80px
+    width: 110px
 }
 
 .book-form > p {

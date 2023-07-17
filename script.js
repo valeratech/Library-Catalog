@@ -98,17 +98,24 @@ function sortName() {
     })
 }
 
-//     forEach(tile => {
-//         const tileA = tile.firstElementChild.firstElementChild.textContent.toLowerCase();
-//         const tileB = tile.nextElementSibling.firstElementChild.firstElementChild.textContent.toLowerCase();
-//         console.log(tileA, tileB);
-//         if (tileA < tileB) {
-//             tileContainer.appendChild(tile);
-//         } else {
-//             // tileContainer.insertBefore(tile, tileContainer.firstElementChild);
-//         }
-//     });
-// }
+function sortDate() {
+    const tileContainer = document.querySelector('.display-tiles');
+    const tilePublish = document.querySelectorAll('.tile-heading');
+    const tileArray = Array.from(tileList);
+    const azTiles = tileArray.sort(function(a, b) {
+        return a.textContent == b.textContent
+            ? 0
+            : (a.textContent.toLowerCase() > b.textContent.toLowerCase() ? 1 : -1);
+    });
+    azTiles.forEach(tile => {
+        if (nameSelect.value === 'ascending') {
+            tileContainer.appendChild(tile.parentElement.parentElement);
+        } else {
+            tileContainer.insertBefore(tile.parentElement.parentElement, tileContainer.firstChild);
+
+        }
+    })
+}
 
 function checkValidation() {
     const formTitle = document.querySelector('.form-title');
@@ -122,7 +129,6 @@ function checkValidation() {
 }
 
 function addBookToLibrary(e) {
-    console.log(1234)
     e.preventDefault();
     const isValid = checkValidation();
     if (isValid) {
@@ -166,7 +172,6 @@ function bookCount() {
     totalBooks[0].textContent = `Total Books: ${myLibrary.length}`;
     let readBook = 0;
     let unreadBook = 0;
-    console.log(totalBooks, readBook, unreadBook);
     myLibrary.forEach((book) => {
         book.read ? readBook++ : unreadBook++;
     });
@@ -175,6 +180,7 @@ function bookCount() {
 }
 
 function createTile(read) {
+    let d = new Date();
     const myArticle = document.querySelector('.display-tiles');
     const myTile = document.createElement('div');
     const myTileFront = document.createElement('div');
@@ -185,7 +191,7 @@ function createTile(read) {
     const myPubDate = document.createElement('p');
     const myInsertDate = document.createElement('p');
     const myUl = document.createElement('ul');
-    const insertDate = new Date();
+    const insertDate = `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${d.getDate()}`;
     const removeIcon = document.createElement('span');
     const infoIcon = document.createElement('span');
     const collapseInfo = document.createElement('span');
@@ -208,7 +214,7 @@ function createTile(read) {
         myAuthor.innerHTML = `Author:  ${book.author}`;
         myPages.innerHTML = `Pages:  ${book.pages}`;
         myPubDate.innerHTML = `Date Published:  ${book.date}`;
-        myInsertDate.innerHTML = `Date Entered: ${insertDate.getFullYear()}-${insertDate.getMonth()}-${insertDate.getDate()}`;
+        myInsertDate.innerHTML = `Date Entered: ${insertDate}`;
         removeIcon.innerHTML = `&#x2715`;
         infoIcon.innerHTML = `<i id="front-flip" class="fa fa-info-circle"></i>`;
         collapseInfo.innerHTML = `<i id="back-flip" class="fa fa-info-circle"></i>`;
@@ -254,6 +260,8 @@ readSelect.addEventListener('change', sortRead);
 
 const nameSelect = document.querySelector('#name');
 nameSelect.addEventListener('change', sortName);
+
+const dateSelect = document.querySelector('#date');
 
 const addBook = document.querySelector('#add-book');
 addBook.addEventListener('click', addBookToLibrary);
