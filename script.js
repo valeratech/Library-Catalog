@@ -99,16 +99,17 @@ function sortName() {
 }
 
 function sortDate() {
+    console.log(dateSelect.value);
     const tileContainer = document.querySelector('.display-tiles');
-    const tilePublish = document.querySelectorAll('.tile-heading');
-    const tileArray = Array.from(tileList);
-    const azTiles = tileArray.sort(function(a, b) {
+    const tilePublish = document.querySelectorAll('#published');
+    const tileArray = Array.from(tilePublish);
+    const dateTiles = tileArray.sort(function(a, b) {
         return a.textContent == b.textContent
             ? 0
-            : (a.textContent.toLowerCase() > b.textContent.toLowerCase() ? 1 : -1);
+            : (a.textContent > b.textContent ? 1 : -1);
     });
-    azTiles.forEach(tile => {
-        if (nameSelect.value === 'ascending') {
+    dateTiles.forEach(tile => {
+        if (dateSelect.value === 'published') {
             tileContainer.appendChild(tile.parentElement.parentElement);
         } else {
             tileContainer.insertBefore(tile.parentElement.parentElement, tileContainer.firstChild);
@@ -202,6 +203,7 @@ function createTile(read) {
     myAuthor.className = 'tile-field';
     myPages.className = 'tile-field';
     myPubDate.className = 'tile-field';
+    myPubDate.id = 'published';
     myInsertDate.className = 'tile-field';
     removeIcon.className = 'remove-book';
     collapseInfo.className = 'collapse-info';
@@ -262,6 +264,7 @@ const nameSelect = document.querySelector('#name');
 nameSelect.addEventListener('change', sortName);
 
 const dateSelect = document.querySelector('#date');
+dateSelect.addEventListener('change', sortDate);
 
 const addBook = document.querySelector('#add-book');
 addBook.addEventListener('click', addBookToLibrary);
